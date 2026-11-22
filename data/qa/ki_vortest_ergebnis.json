@@ -1,0 +1,207 @@
+{
+  "prompt_version": "P4-v2",
+  "modell": "openai/gpt-oss-120b",
+  "anbieter": "groq",
+  "zeit": "2026-11-21T04:38:56+01:00",
+  "varianten": {
+    "A": {
+      "reasoning_effort": "low",
+      "faelle": [
+        {
+          "id": "V1",
+          "soll": "echter Widerspruch",
+          "ki": "echter Widerspruch",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Im Kurztext wird das Gussrohr mit DN 150 angegeben, im Langtext wird dasselbe Gussrohr zusätzlich mit DN 200 bezeichnet. Beide Werte beziehen sich auf das gleiche Bauteil, das Gussrohr.",
+          "rueckfrage": "Bitte klären Sie, ob das Gussrohr DN 150 oder DN 200 geliefert und verlegt werden soll.",
+          "tokens": 1355,
+          "dauer_s": 1.04
+        },
+        {
+          "id": "V2",
+          "soll": "echter Widerspruch",
+          "ki": "echter Widerspruch",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Im Kurztext wird das Rohr mit Nennweite DN 125 angegeben, im Langtext wird zusätzlich die Nennweite DN 160 genannt, beide beziehen sich auf dasselbe KG‑Rohr.",
+          "rueckfrage": "Bitte klären Sie, welche Nennweite (DN 125 oder DN 160) für das KG‑Rohr verbindlich ist.",
+          "tokens": 1284,
+          "dauer_s": 0.99
+        },
+        {
+          "id": "V3",
+          "soll": "echter Widerspruch",
+          "ki": "echter Widerspruch",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Im Kurztext wird das Gewinderohr mit Nennweite DN 80 angegeben, im Langtext wird für dasselbe Gewinderohr die Nennweite DN 65 genannt.",
+          "rueckfrage": "Bitte klären Sie, welche Nennweite (DN 80 oder DN 65) für das Gewinderohr korrekt ist.",
+          "tokens": 1190,
+          "dauer_s": 0.79
+        },
+        {
+          "id": "V4",
+          "soll": "anderes Bauteil",
+          "ki": "anderes Bauteil",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Der Kurztext gibt die Nennweite der Absperrklappe (DN 300) an, während der Langtext die Nennweite des genannten Übergangsstücks (DN 250) nennt. Die beiden Werte beziehen sich also auf unterschiedliche Bauteile.",
+          "rueckfrage": "",
+          "tokens": 1347,
+          "dauer_s": 1.05
+        },
+        {
+          "id": "V5",
+          "soll": "anderes Bauteil",
+          "ki": "anderes Bauteil",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Der Kurztext gibt die Nennweite des Hauptanschlusses (DN 32) an, während der Langtext zusätzlich die Nennweite der Heizkreisabgänge (DN 20) nennt. Jeder Wert bezieht sich auf ein unterschiedliches Bauteil.",
+          "rueckfrage": "",
+          "tokens": 1268,
+          "dauer_s": 0.85
+        },
+        {
+          "id": "V6",
+          "soll": "Bereichs- oder Mehrfachangabe",
+          "ki": "Bereichs- oder Mehrfachangabe",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Der Kurztext nennt eindeutig die Nennweite DN 110. Der Langtext gibt an, dass die Nennweite wahlweise DN 90/110 sein kann, also einen zulässigen Wertebereich. Beide Angaben beziehen sich auf dasselbe Bauteil.",
+          "rueckfrage": "",
+          "tokens": 1187,
+          "dauer_s": 0.71
+        },
+        {
+          "id": "V7",
+          "soll": "Bereichs- oder Mehrfachangabe",
+          "ki": "Bereichs- oder Mehrfachangabe",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Der Kurztext nennt die Festigkeitsklasse C20/25, während der Langtext einen zulässigen Bereich von C16/20 bis C25/30 angibt, in dem C20/25 enthalten ist.",
+          "rueckfrage": "",
+          "tokens": 1272,
+          "dauer_s": 1.13
+        },
+        {
+          "id": "V8",
+          "soll": "unklar",
+          "ki": "echter Widerspruch",
+          "status": "KI-Vorschlag gültig",
+          "treffer": false,
+          "begruendung": "Der Kurztext bezieht sich auf einen Leitungsabschnitt mit DN 80, während der Langtext zusätzlich angibt, dass im Bestandsplan DN 100 eingetragen ist, also unterschiedliche Nennweiten für denselben Abschnitt nennt.",
+          "rueckfrage": "Bitte klären Sie, welche Nennweite (DN 80 oder DN 100) für den Leitungsabschnitt verbindlich ist.",
+          "tokens": 1239,
+          "dauer_s": 0.95
+        }
+      ],
+      "tokens": 10142,
+      "dauer_s": 7.51,
+      "treffer": 7
+    },
+    "B": {
+      "reasoning_effort": "medium",
+      "faelle": [
+        {
+          "id": "V1",
+          "soll": "echter Widerspruch",
+          "ki": "anderes Bauteil",
+          "status": "KI-Vorschlag gültig",
+          "treffer": false,
+          "begruendung": "Der Kurztext bezieht sich auf ein Gussrohr mit DN 150. Der Langtext nennt zusätzlich ein duktiles Gussrohr mit DN 200, das ein anderes Bauteil ist.",
+          "rueckfrage": "",
+          "tokens": 1641,
+          "dauer_s": 1.74
+        },
+        {
+          "id": "V2",
+          "soll": "echter Widerspruch",
+          "ki": "echter Widerspruch",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Im Kurztext wird das KG‑Rohr mit Nennweite DN 125 angegeben, im Langtext wird für dasselbe KG‑Rohr zusätzlich die Nennweite DN 160 genannt. Beide Werte beziehen sich auf das gleiche Bauteil, daher liegt ein Widerspruch vor.",
+          "rueckfrage": "Bitte bestätigen Sie, welche Nennweite (DN 125 oder DN 160) für das KG‑Rohr vorgesehen ist.",
+          "tokens": 1648,
+          "dauer_s": 1.79
+        },
+        {
+          "id": "V3",
+          "soll": "echter Widerspruch",
+          "ki": "echter Widerspruch",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Im Kurztext wird die Nennweite des Gewinderohrs mit DN 80 angegeben. Im Langtext wird für dasselbe Gewinderohr die Nennweite mit DN 65 angegeben, was zu einem Widerspruch führt.",
+          "rueckfrage": "Bitte bestätigen Sie, ob die Nennweite des Gewinderohrs DN 80 oder DN 65 beträgt.",
+          "tokens": 1637,
+          "dauer_s": 1.72
+        },
+        {
+          "id": "V4",
+          "soll": "anderes Bauteil",
+          "ki": "anderes Bauteil",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Der Kurztext nennt die Nennweite DN 300 für die Absperrklappe, während der Langtext die Nennweite DN 250 für das genannte Übergangsstück angibt. Die beiden Werte beziehen sich also auf unterschiedliche Bauteile.",
+          "rueckfrage": "",
+          "tokens": 1433,
+          "dauer_s": 1.03
+        },
+        {
+          "id": "V5",
+          "soll": "anderes Bauteil",
+          "ki": "anderes Bauteil",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Der Wert DN 32 bezieht sich im Kurztext auf den Hauptanschluss, während DN 20 im Langtext den Heizkreisabgängen zugeordnet ist.",
+          "rueckfrage": "",
+          "tokens": 1574,
+          "dauer_s": 1.64
+        },
+        {
+          "id": "V6",
+          "soll": "Bereichs- oder Mehrfachangabe",
+          "ki": "Bereichs- oder Mehrfachangabe",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Der Kurztext bezieht sich auf die Nennweite DN 110, der Langtext nennt die Nennweite wahlweise DN 90/110 als zulässige Optionen. Beide Werte gehören zum gleichen Bauteil, dem Kabelschutzrohr.",
+          "rueckfrage": "",
+          "tokens": 1495,
+          "dauer_s": 1.44
+        },
+        {
+          "id": "V7",
+          "soll": "Bereichs- oder Mehrfachangabe",
+          "ki": "Bereichs- oder Mehrfachangabe",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Im Kurztext wird die Betonfestigkeitsklasse C20/25 genannt. Im Langtext wird ein Bereich von C16/20 bis C25/30 angegeben, wobei C20/25 innerhalb dieses Bereichs liegt.",
+          "rueckfrage": "",
+          "tokens": 1554,
+          "dauer_s": 1.44
+        },
+        {
+          "id": "V8",
+          "soll": "unklar",
+          "ki": "unklar",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Kurztext bezieht sich auf den zu fertigenden Leitungsabschnitt mit DN 80, während der Langtext zusätzlich den im Bestandsplan eingetragenen DN 100 erwähnt, ohne klarzustellen, welcher Wert verbindlich ist.",
+          "rueckfrage": "Bitte klären Sie, ob die anzuwendende Nennweite DN 80 oder DN 100 ist.",
+          "tokens": 1747,
+          "dauer_s": 1.96
+        }
+      ],
+      "tokens": 12729,
+      "dauer_s": 12.76,
+      "treffer": 7
+    }
+  },
+  "abbruch": null,
+  "tokens_gesamt": 22871,
+  "wahl": {
+    "variante": "A",
+    "reasoning_effort": "low",
+    "regel": "meiste Treffer, bei Gleichstand weniger Tokens; alle echten Widersprüche erkannt"
+  }
+}

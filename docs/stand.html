@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LV-Prüfassistent – Stand</title>
+<style>
+:root{--bg:#f7f6f2;--fl:#ffffff;--tx:#1d1d1b;--mu:#5d5c57;--li:#dedcd4;--ac:#1f5f8b;--ac2:#e8f0f6;--ok:#2e7d4f;--okb:#e6f3ea;--wa:#9a5b00;--wab:#fbf0dc;--er:#a83232;--erb:#f8e4e4;--code:#efede6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161615;--fl:#1f1f1d;--tx:#ecebe6;--mu:#a7a59d;--li:#3a3935;--ac:#7db4dc;--ac2:#1d2a33;--ok:#7cc79a;--okb:#1b2b21;--wa:#e4b35f;--wab:#2e2516;--er:#e58b8b;--erb:#331d1d;--code:#2a2926}}
+:root[data-theme="dark"]{--bg:#161615;--fl:#1f1f1d;--tx:#ecebe6;--mu:#a7a59d;--li:#3a3935;--ac:#7db4dc;--ac2:#1d2a33;--ok:#7cc79a;--okb:#1b2b21;--wa:#e4b35f;--wab:#2e2516;--er:#e58b8b;--erb:#331d1d;--code:#2a2926}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:32px 16px 80px}
+header{border-bottom:1px solid var(--li);padding-bottom:20px;margin-bottom:28px}
+h1{font-size:2rem;line-height:1.2;margin:0 0 6px}
+h2{font-size:1.35rem;margin:48px 0 12px;padding-top:8px;border-top:1px solid var(--li)}
+h3{font-size:1.05rem;margin:24px 0 8px}
+p,li{max-width:72ch}
+.mu{color:var(--mu)}
+nav ol{columns:2;column-gap:32px;padding-left:20px;margin:12px 0 0}
+a{color:var(--ac)}
+code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:.88em;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.karten{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+.karte{background:var(--fl);border:1px solid var(--li);border-radius:10px;padding:14px 16px}
+.karte b{display:block;font-size:1.6rem;line-height:1.2}
+.karte span{color:var(--mu);font-size:.9rem}
+.box{border-radius:10px;padding:14px 18px;margin:16px 0;border:1px solid var(--li);background:var(--fl)}
+.box.wa{background:var(--wab);border-color:transparent}
+.box.ok{background:var(--okb);border-color:transparent}
+.box.er{background:var(--erb);border-color:transparent}
+.tw{overflow-x:auto;margin:12px 0;border:1px solid var(--li);border-radius:10px;background:var(--fl)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--li)}
+th{background:var(--ac2);font-weight:600}
+tr:last-child td{border-bottom:0}
+td.z{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{display:inline-block;font-size:.75rem;font-weight:600;padding:1px 7px;border-radius:999px;margin-right:4px;white-space:nowrap}
+.t-b{background:var(--okb);color:var(--ok)}.t-o{background:var(--wab);color:var(--wa)}.t-a{background:var(--ac2);color:var(--ac)}
+blockquote{margin:6px 0;padding:4px 12px;border-left:3px solid var(--ac);color:var(--tx);background:var(--fl)}
+figure{margin:18px 0}
+figure img{width:100%;height:auto;border:1px solid var(--li);border-radius:10px;display:block}
+figcaption{color:var(--mu);font-size:.9rem;margin-top:6px}
+svg{width:100%;height:auto;display:block}
+svg text{font-family:inherit}
+.dia{background:var(--fl);border:1px solid var(--li);border-radius:10px;padding:12px;margin:16px 0}
+details{margin:10px 0}
+summary{cursor:pointer;font-weight:600}
+footer{margin-top:56px;color:var(--mu);font-size:.9rem;border-top:1px solid var(--li);padding-top:16px}
+@media (max-width:640px){nav ol{columns:1}h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>LV-Prüfassistent – Stand der Arbeit</h1>
+<p class="mu">TUM.ai Construction Hackathon, Challenge A · Stand: 21.11.2026, Block B0 (Konsolidierung), aufbauend auf Commit <code>1528e3e</code> („B0a: …“); Ergänzungen B0b in den Abschnitten 4, 6, 8 und 10–13 · Abgabe: So 22.11.2026, 12:00 Uhr</p>
+<p>Kennzeichnung der Aussagen wie in den Leitplanken: <span class="tag t-b">BESTÄTIGT</span> aus Datei, Prüflauf oder vom Team, <span class="tag t-o">OFFEN</span> Entscheidung oder Information fehlt.</p>
+<nav><strong>Inhalt</strong><ol>
+<li><a href="#zweck">Wozu das Werkzeug da ist</a></li>
+<li><a href="#ablauf">Wie es arbeitet (Ablauf)</a></li>
+<li><a href="#kann">Was es heute kann – mit Beispielen</a></li>
+<li><a href="#grenzen">Was es nicht kann – und warum</a></li>
+<li><a href="#bedienung">Bedienung</a></li>
+<li><a href="#zahlen">Zahlen mit Quellen</a></li>
+<li><a href="#verlauf">Verlauf: Commits und Entscheidungen</a></li>
+<li><a href="#offen">Offene Punkte und Risiken</a></li>
+<li><a href="#bilder">Bildschirmfotos</a></li>
+<li><a href="#soll-ist">Soll-Ist-Abgleich</a></li>
+<li><a href="#prozess">Prozess-Abgleich</a></li>
+<li><a href="#team">Unser Agenten-Team</a></li>
+<li><a href="#regeln">Regeln E1–E14</a></li>
+</ol></nav>
+</header>
+
+<section id="zweck">
+<h2>1. Wozu das Werkzeug da ist</h2>
+<p>Ein <strong>Leistungsverzeichnis (LV)</strong> beschreibt Position für Position, was auf einer Baustelle gebaut werden soll: kurz in einem Kurztext, ausführlich in einem Langtext, dazu Menge und Einheit. Wer ein Angebot kalkuliert, muss oft hunderte solcher Positionen lesen. Fehler und Unklarheiten fallen dabei leicht durch – und können später teuer werden.</p>
+<p>Der LV-Prüfassistent liest ein LV ein (Dateiformate GAEB XML, GAEB 90 und PDF), sucht nach wenigen, klar festgelegten Auffälligkeiten und zeigt jede Auffälligkeit als <strong>Fund</strong> – immer mit dem <strong>wörtlichen Beleg aus dem LV</strong>. Die kalkulierende Person entscheidet selbst: bestätigen, verwerfen oder beim Auftraggeber nachfragen. Am Ende entsteht ein <strong>Risikobericht</strong> als Excel-Datei.</p>
+<div class="box"><strong>Grundsätze</strong> (docs/guardrails.md): Ein Fund ohne wörtlichen Beleg ist kein Fund. Ein Hinweis ist kein Fehler – jeder Fund trägt genau eine Kategorie (nachweisbarer Fehler, möglicher Widerspruch, Unklarheit, Risikohinweis). Keine Rechtsberatung, keine Aussagen zu Ansprüchen, keine Garantie auf Vollständigkeit. Eine KI darf Vorschläge machen, aber keinen Fund löschen oder ändern.</div>
+</section>
+
+<section id="ablauf">
+<h2>2. Wie es arbeitet</h2>
+<p>Das Diagramm zeigt den Weg einer Datei durch das Werkzeug. Unter jedem Schritt steht die Code-Datei, die ihn ausführt.</p>
+<div class="dia" role="img" aria-label="Ablaufdiagramm: Upload, Parser, Prüfungen, Funde mit Beleg, Ansicht und Entscheidung, Risikobericht; daneben die freiwillige KI-Gegenprüfung">
+<svg viewBox="0 0 940 430" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="pf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--mu)"/></marker></defs>
+<g font-size="14">
+<rect x="10" y="30" width="160" height="78" rx="10" fill="var(--ac2)" stroke="var(--ac)"/>
+<text x="90" y="62" text-anchor="middle" fill="var(--tx)" font-weight="600">1 · LV hochladen</text>
+<text x="90" y="84" text-anchor="middle" fill="var(--mu)" font-size="12">src/app.py</text>
+<rect x="200" y="30" width="170" height="78" rx="10" fill="var(--ac2)" stroke="var(--ac)"/>
+<text x="285" y="58" text-anchor="middle" fill="var(--tx)" font-weight="600">2 · Einlesen (Parser)</text>
+<text x="285" y="78" text-anchor="middle" fill="var(--mu)" font-size="12">src/lv_parser.py</text>
+<text x="285" y="96" text-anchor="middle" fill="var(--mu)" font-size="12">GAEB XML · GAEB 90 · PDF</text>
+<rect x="400" y="10" width="250" height="56" rx="10" fill="var(--ac2)" stroke="var(--ac)"/>
+<text x="525" y="34" text-anchor="middle" fill="var(--tx)" font-weight="600">3a · Prüfung Nr. 1–2</text>
+<text x="525" y="54" text-anchor="middle" fill="var(--mu)" font-size="12">src/pruefung_widerspruch.py</text>
+<rect x="400" y="74" width="250" height="56" rx="10" fill="var(--ac2)" stroke="var(--ac)"/>
+<text x="525" y="98" text-anchor="middle" fill="var(--tx)" font-weight="600">3b · Prüfungen Nr. 3–6</text>
+<text x="525" y="118" text-anchor="middle" fill="var(--mu)" font-size="12">src/pruefung_formal.py</text>
+<rect x="680" y="30" width="250" height="78" rx="10" fill="var(--ac2)" stroke="var(--ac)"/>
+<text x="805" y="58" text-anchor="middle" fill="var(--tx)" font-weight="600">4 · Funde mit Beleg</text>
+<text x="805" y="78" text-anchor="middle" fill="var(--mu)" font-size="12">src/bericht.py (pruefe_lv)</text>
+<text x="805" y="96" text-anchor="middle" fill="var(--mu)" font-size="12">Belegprüfung: data/qa/s2_ergebnis.json</text>
+<line x1="170" y1="69" x2="196" y2="69" stroke="var(--mu)" stroke-width="2" marker-end="url(#pf)"/>
+<line x1="370" y1="60" x2="396" y2="42" stroke="var(--mu)" stroke-width="2" marker-end="url(#pf)"/>
+<line x1="370" y1="78" x2="396" y2="100" stroke="var(--mu)" stroke-width="2" marker-end="url(#pf)"/>
+<line x1="650" y1="40" x2="676" y2="58" stroke="var(--mu)" stroke-width="2" marker-end="url(#pf)"/>
+<line x1="650" y1="102" x2="676" y2="82" stroke="var(--mu)" stroke-width="2" marker-end="url(#pf)"/>
+<line x1="805" y1="108" x2="805" y2="176" stroke="var(--mu)" stroke-width="2" marker-end="url(#pf)"/>
+<rect x="600" y="180" width="330" height="96" rx="10" fill="var(--okb)" stroke="var(--ok)"/>
+<text x="765" y="208" text-anchor="middle" fill="var(--tx)" font-weight="600">5 · Fundliste und Entscheidung</text>
+<text x="765" y="228" text-anchor="middle" fill="var(--mu)" font-size="12">Bestätigen · Verwerfen · Rückfrage stellen</text>
+<text x="765" y="246" text-anchor="middle" fill="var(--mu)" font-size="12">src/app.py · Status in data/findings/</text>
+<text x="765" y="264" text-anchor="middle" fill="var(--mu)" font-size="12">Die Person entscheidet, nicht das Werkzeug</text>
+<line x1="765" y1="276" x2="765" y2="336" stroke="var(--mu)" stroke-width="2" marker-end="url(#pf)"/>
+<rect x="600" y="340" width="330" height="78" rx="10" fill="var(--okb)" stroke="var(--ok)"/>
+<text x="765" y="368" text-anchor="middle" fill="var(--tx)" font-weight="600">6 · Risikobericht (.xlsx)</text>
+<text x="765" y="388" text-anchor="middle" fill="var(--mu)" font-size="12">src/bericht.py (risikobericht)</text>
+<text x="765" y="406" text-anchor="middle" fill="var(--mu)" font-size="12">alle Funde, Belege, Entscheidungen, KI-Spalten</text>
+<rect x="10" y="180" width="540" height="238" rx="10" fill="var(--wab)" stroke="var(--wa)" stroke-dasharray="6 4"/>
+<text x="280" y="206" text-anchor="middle" fill="var(--tx)" font-weight="600">Freiwillig: KI-Gegenprüfung für Funde Nr. 1–2 (nur auf Knopfdruck)</text>
+<text x="280" y="226" text-anchor="middle" fill="var(--mu)" font-size="12">src/ki_pruefung.py · src/ki_client.py · Groq, Modell openai/gpt-oss-120b, Prompt P4-v2</text>
+<g font-size="12">
+<rect x="30" y="246" width="110" height="52" rx="8" fill="var(--fl)" stroke="var(--li)"/><text x="85" y="268" text-anchor="middle" fill="var(--tx)">Cache?</text><text x="85" y="286" text-anchor="middle" fill="var(--mu)">data/ki_cache/</text>
+<rect x="160" y="246" width="110" height="52" rx="8" fill="var(--fl)" stroke="var(--li)"/><text x="215" y="268" text-anchor="middle" fill="var(--tx)">Anfrage</text><text x="215" y="286" text-anchor="middle" fill="var(--mu)">nur Kurz-/Langtext</text>
+<rect x="290" y="246" width="110" height="52" rx="8" fill="var(--fl)" stroke="var(--li)"/><text x="345" y="268" text-anchor="middle" fill="var(--tx)">Prüfkette</text><text x="345" y="286" text-anchor="middle" fill="var(--mu)">JSON · Zitat · R7</text>
+<rect x="420" y="246" width="110" height="52" rx="8" fill="var(--fl)" stroke="var(--li)"/><text x="475" y="268" text-anchor="middle" fill="var(--tx)">Vorschlag</text><text x="475" y="286" text-anchor="middle" fill="var(--mu)">gültig / verworfen</text>
+<line x1="140" y1="272" x2="156" y2="272" stroke="var(--mu)" stroke-width="2" marker-end="url(#pf)"/>
+<line x1="270" y1="272" x2="286" y2="272" stroke="var(--mu)" stroke-width="2" marker-end="url(#pf)"/>
+<line x1="400" y1="272" x2="416" y2="272" stroke="var(--mu)" stroke-width="2" marker-end="url(#pf)"/>
+<text x="30" y="328" fill="var(--tx)">Die KI ordnet einen Widerspruch ein: „echter Widerspruch“, „anderes Bauteil“,</text>
+<text x="30" y="346" fill="var(--tx)">„Bereichs- oder Mehrfachangabe“ oder „unklar“ – mit Begründung, Zitaten und</text>
+<text x="30" y="364" fill="var(--tx)">Rückfrage-Entwurf. Der Code prüft jedes Zitat wörtlich am Text. Der Regel-Fund</text>
+<text x="30" y="382" fill="var(--tx)">bleibt immer stehen. Protokoll: data/qa/ki_log.jsonl (Tokens, Dauer, Ergebnis).</text>
+</g>
+<line x1="550" y1="250" x2="596" y2="236" stroke="var(--wa)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#pf)"/>
+</g>
+</svg>
+</div>
+</section>
+
+<section id="kann">
+<h2>3. Was es heute kann – mit Beispielen</h2>
+<p>Sechs Prüfungen aus dem Prüfkatalog (input/pruefkatalog.md) sind eingebaut. Alle Beispiele stammen aus dem Datensatz der Challenge und sind am Original geprüft (docs/pruefprotokoll.md, docs/acceptance.md).</p>
+<div class="tw"><table>
+<tr><th>Nr.</th><th>Prüfung</th><th>Kategorie · Priorität</th><th>Beispiel aus dem Datensatz</th></tr>
+<tr><td>1</td><td>Nennweite (DN) im Kurztext ≠ Langtext</td><td>möglicher Widerspruch · 1</td><td>8209.003_Leistungsverzeichnis_leer.X83, OZ 05.01.4: <blockquote>„Edelstahl-Rohr DN 125“</blockquote><blockquote>„Edelstahlrohr DN 100“</blockquote></td></tr>
+<tr><td>2</td><td>Betonfestigkeitsklasse im Kurztext ≠ Langtext</td><td>möglicher Widerspruch · 1</td><td>[NUMMER_001]_leer.X83, OZ 3.3.3: <blockquote>„Rückenstütze C20/25“</blockquote><blockquote>„Normalbeton C25/30 (LP) XF2“</blockquote></td></tr>
+<tr><td>3</td><td>Menge oder Einheit fehlt</td><td>nachweisbarer Fehler · 1 (Menge 0 bei vorhandener Einheit: Risikohinweis · 3)</td><td>[ORT_024] LV24069.D86: 38 Nachtragspositionen mit Menge 0 und ohne Einheit; die App weist bei Auftrags-LVs (Austauschphase 86) darauf hin, dass Nachträge oft nur einen Einheitspreis haben (docs/decisions.md, E2).</td></tr>
+<tr><td>4</td><td>OZ doppelt im selben LV</td><td>nachweisbarer Fehler · 1</td><td>im Datensatz kein Fall; die Prüfung ist mit Testdaten abgesichert (src/test_pruefung_formal.py).</td></tr>
+<tr><td>5</td><td>Bedarfsposition</td><td>Risikohinweis · 2</td><td>LV_18_Estrich.pdf 11.3.70 „Zulage für Schnellestrich (10 Tage)“: <blockquote>„Bedarfsposition ohne GB“</blockquote></td></tr>
+<tr><td>6</td><td>Pauschale (psch)</td><td>Risikohinweis · 2</td><td>GAEB-[PROJEKT_004].X83 02.0016: „Wasserhaltung Bach bis 150 l/s“, 1 psch</td></tr>
+</table></div>
+<h3>Weitere Fähigkeiten</h3>
+<ul>
+<li><strong>Beleg am Original:</strong> Für geprüfte Funde zeigt die App „Beleg am Original geprüft“; bei PDF steht die Seite dabei.</li>
+<li><strong>Fundliste:</strong> sortiert nach Priorität, dann OZ; Filter nach Kategorie und Priorität.</li>
+<li><strong>Entscheidung je Fund:</strong> Bestätigen, Verwerfen, Rückfrage stellen, Zurück auf offen. Der Status bleibt gespeichert (data/findings/).</li>
+<li><strong>Risikobericht:</strong> Excel-Datei mit allen Funden, Belegen, Entscheidungen, Zeitpunkt (MEZ/MESZ), Git-Stand und – falls vorhanden – den KI-Spalten.</li>
+<li><strong>KI-Gegenprüfung</strong> (freiwillig, Prüfungen Nr. 1–2): Vorschlag zur Einordnung mit Begründung, wörtlichen Zitaten und Rückfrage-Entwurf. Beispiel 8209.003 OZ 05.01.4: KI-Vorschlag „echter Widerspruch“, Rückfrage-Entwurf <em>„Bitte klären Sie, welche Nennweite (DN 125 oder DN 100) für das Edelstahlrohr korrekt ist.“</em> (Bild in Abschnitt 9).</li>
+</ul>
+</section>
+
+<section id="grenzen">
+<h2>4. Was es nicht kann – und warum</h2>
+<div class="tw"><table>
+<tr><th>Grenze</th><th>Grund</th></tr>
+<tr><td>Keine automatisch oder per KI erzeugten Preise</td><td>Bleibt ausgeschlossen (docs/guardrails.md D, präzisiert in B0b, T1). <span class="tag t-a">geplant in B6</span> Vergleichspreise nur aus bepreisten Dateien des Datensatzes, immer mit Quelle; Zuschlags-Rechner und What-if nur mit Eingaben des Kalkulators.</td></tr>
+<tr><td>Noch keine historischen Projektdaten</td><td>Ausschluss aufgehoben (B0a). Als historische Projektdaten gelten die bepreisten Dateien und die Nachträge im Datensatz (T2). <span class="tag t-a">geplant in B3 und B6</span></td></tr>
+<tr><td>Noch keine Rechenprüfung Menge × Einheitspreis</td><td>Ausschluss aufgehoben (B0a); die Vorabprüfung fand in bepreisten GAEB-Dateien keine Abweichung. <span class="tag t-a">geplant in B1</span> (Prüfung Nr. 17)</td></tr>
+<tr><td>Keine allgemeine Vollständigkeitsprüfung („fehlt eine Leistung?“)</td><td>Außerhalb des Umfangs. Eine kleine Prüfung „mögliche fehlende Leistung“ (höchstens 5 Paarregeln, Risikohinweis) ist freigegeben. <span class="tag t-a">geplant in B3</span></td></tr>
+<tr><td>Noch kein Excel-Import</td><td>Ausschluss aufgehoben (B0a); der Datensatz enthält keine Excel-Datei, getestet wird ohne Orga-Beispiel und so gekennzeichnet. <span class="tag t-a">geplant in B4</span></td></tr>
+<tr><td>Prüfung Nr. 1 meldet nur, wenn der Langtext genau einen DN-Wert nennt</td><td>Sonst zu viele Fehlalarme: z. B. Schächte in 501-24-01 (02.05.0005/0007/0009), deren DN-Werte im Langtext zu Anbauteilen gehören (docs/pruefprotokoll.md, S1).</td></tr>
+<tr><td>„Nur Einh.-Pr.“ in PDFs wird nicht erkannt</td><td>Steht nur in der Mengenzeile, die der Parser nicht ausgibt; der Parser bleibt unverändert (docs/decisions.md, E3).</td></tr>
+<tr><td>Nur Prüfungen Nr. 1–6, nicht die Nr. 7–18 des Prüfkatalogs</td><td>Wenige, klar definierte Prüfklassen im ersten Prototyp; Stichwortlisten für Nr. 7–14 sind nicht abgestimmt. <span class="tag t-a">geplant in B1</span> Nr. 15–17 · <span class="tag t-a">geplant in B2</span> Nr. 7–14 und 18</td></tr>
+<tr><td>Die KI-Einordnung ist ein Vorschlag, kein Urteil</td><td>In der Messung (Abschnitt 6) ordnet die KI echte Widersprüche teils als „anderes Bauteil“ ein; deshalb bleibt jeder Regel-Fund stehen und die Person entscheidet. Seit B0b gilt Regel E13 „Die KI darf nie entwarnen“: hält die KI einen Fund für einen Fehlalarm, steht in der Fundliste nur „KI-Hinweis im Detail“; die Detailansicht und der Export zeigen die Einordnung mit einem Warnhinweis.</td></tr>
+<tr><td>Keine Rechtsberatung, keine Aussagen zu Nachträgen als Anspruch</td><td>Regel R7; erlaubt sind nur „mögliches Nachtragspotenzial“ und „möglicher Streitpunkt in der Ausführung“.</td></tr>
+</table></div>
+</section>
+
+<section id="bedienung">
+<h2>5. Bedienung</h2>
+<ol>
+<li><strong>Starten</strong> (aus dem Projektordner, Python 3.12 über uv):<br><code>uv run --no-project --python 3.12 --with streamlit --with pdfplumber --with lxml --with pandas --with openpyxl --with anthropic --with openai streamlit run src/app.py --server.address localhost --browser.gatherUsageStats false</code></li>
+<li><strong>LV hochladen:</strong> eine Datei (GAEB XML, GAEB 90 oder PDF) in das Upload-Feld ziehen. Die App zeigt Format, Zahl der Positionen und Zahl der Funde.</li>
+<li><strong>Funde durchgehen:</strong> links die Fundliste (Filter Kategorie/Priorität), darunter „Fund öffnen“. Rechts stehen Belege, Begründung und – falls vorhanden – der KI-Vorschlag.</li>
+<li><strong>Entscheiden:</strong> Bestätigen, Verwerfen oder Rückfrage stellen.</li>
+<li><strong>KI-Gegenprüfung (optional):</strong> braucht eine Datei <code>.env</code> mit <code>KI_ANBIETER=groq</code>, <code>KI_MODELL=openai/gpt-oss-120b</code> und <code>GROQ_API_KEY</code>. Button „KI-Gegenprüfung starten (n Funde)“. Antworten aus dem Cache kosten keinen Aufruf; ohne Key zeigt die App „KI aus (kein API-Key)“ und alle übrigen Funktionen laufen weiter.</li>
+<li><strong>Bericht:</strong> „Risikobericht herunterladen (.xlsx)“.</li>
+</ol>
+</section>
+
+<section id="zahlen">
+<h2>6. Zahlen mit Quellen</h2>
+<div class="karten">
+<div class="karte"><b>43 von 44</b><span>Dateien lesbar, 4.229 Positionen geprüft (2 Dateien nur mit Preisen) · Prüflauf 21.11.2026</span></div>
+<div class="karte"><b>464</b><span>Funde gesamt: Nr. 1: 24 · Nr. 2: 13 · Nr. 3: 49 · Nr. 4: 0 · Nr. 5: 162 · Nr. 6: 216 · Prüflauf 21.11.2026</span></div>
+<div class="karte"><b>1.252</b><span>Positionen aus PDF gegen GAEB-Referenz gefunden, Menge und Einheit ohne Abweichung · docs/acceptance.md, T1</span></div>
+<div class="karte"><b>267 / 267</b><span>Tests grün: 45 · 71 · 45 · 54 · 33 · 6 · Doppellauf 13 (7 Testreihen) · Lauf 21.11.2026, B0b</span></div>
+<div class="karte"><b>9 von 13</b><span>KI-Gegenprüfung, je Position im ungünstigsten Fall richtig (grob) · echte Widersprüche nur bei 3 von 7 in jeder Datei erkannt · data/qa/ki_messung_lauf1_auswertung_v2.json</span></div>
+</div>
+<h3>KI-Gegenprüfung: Messung gegen den Goldstandard <span class="tag t-b">BESTÄTIGT</span></h3>
+<p>Der Goldstandard (data/qa/ki_goldstandard.json) entstand <strong>vor</strong> dem KI-Lauf: 5 vorgeprüfte Positiv-Tests (T2), 3 bestätigte Fehlalarme und 14 Positionen, die Person B am Original eingeordnet hat (Etiketten eingelesen 06:14, erster KI-Aufruf 06:18). Ergebnisse: data/qa/ki_messung_lauf1.json.</p>
+<div class="tw"><table>
+<tr><th>Messung (Regel-Funde, 29 zählende Funde in 14 Positionen)</th><th class="z">Treffer</th><th>Hinweis</th></tr>
+<tr><td>grob „echt“ gegen „Fehlalarm“, je Fund</td><td class="z">16 von 22</td><td>7 Funde mit Goldstandard „unklar“ getrennt (KI: alle „echter Widerspruch“)</td></tr>
+<tr><td>fein, 4 Klassen, je Fund</td><td class="z">16 von 29</td><td>„unklar“ als eigene Klasse</td></tr>
+<tr><td>grob, je Position</td><td class="z">8 von 9</td><td>3 Positionen „unklar“ getrennt; 2 Positionen uneinheitlich (s. u.)</td></tr>
+<tr><td>fein, je Position</td><td class="z">8 von 12</td><td>2 Positionen uneinheitlich, nicht gezählt</td></tr>
+</table></div>
+<h3>Messung v2: je Position, ungünstigster Fall (B0b) <span class="tag t-b">BESTÄTIGT</span></h3>
+<p>Ab B0b ist das die Zahl für Bericht und Pitch. Eine Position zählt nur als richtig, wenn die KI in <strong>jeder</strong> Datei richtig liegt; so werden auch die Positionen mitgezählt, bei denen die KI je nach Datei anders antwortet. Neu ausgewertet ohne einen einzigen KI-Aufruf, aus den gespeicherten Ergebnissen von Lauf 1 und dem Goldstandard nach der Teamentscheidung zu 05.01.4 und 05.01.46 (beide „echter Widerspruch“). Quelle: data/qa/ki_messung_lauf1_auswertung_v2.json, src/auswertung_v2.py.</p>
+<div class="tw"><table>
+<tr><th>Messung v2 (Regel-Funde, 16 Positionen)</th><th class="z">Ergebnis</th><th>Hinweis</th></tr>
+<tr><td>grob „echt“ gegen „Fehlalarm“, je Position, ungünstigster Fall</td><td class="z">9 von 13</td><td>3 Positionen mit Goldstandard „unklar“ ausgelassen (1.1.4, 2.3.23, 5.3.100)</td></tr>
+<tr><td>fein, 4 Klassen, je Position, ungünstigster Fall</td><td class="z">9 von 16</td><td>„unklar“ als eigene Klasse</td></tr>
+<tr><td>echte Widersprüche, in jeder Datei erkannt</td><td class="z">3 von 7</td><td>3.3.4, 3.1.180, 5.1.4</td></tr>
+<tr><td>gefährliche Richtung (echter Widerspruch, KI schlägt Fehlalarm vor)</td><td class="z">4 von 7</td><td>3.2.60, 3.3.3, 5.1.46, 5.3.3</td></tr>
+</table></div>
+<p class="mu">Die Tabelle oben (Lauf 1) bleibt zur Nachvollziehbarkeit stehen; ihre Zeile „grob, je Position: 8 von 9“ ließ die uneinheitlichen Positionen weg (Lücke L10).</p>
+<div class="box er"><strong>Gefährliche Fehlerrichtung:</strong> Bei 6 von 14 Funden, die im Goldstandard „echter Widerspruch“ sind, schlägt die KI einen Fehlalarm vor – 5-mal „anderes Bauteil“ (OZ 3.3.3 und 5.3.3 in Abgabe LV.pdf, Leistungsverzeichnis_leer.pdf, StBALV23040.D86), 1-mal „Bereichs- oder Mehrfachangabe“ (Leistungsverzeichnis.pdf 3.2.60). Die Regel-Funde bleiben in der App stehen.</div>
+<div class="tw"><table>
+<tr><th>Weitere Messwerte</th><th>Wert</th><th>Quelle</th></tr>
+<tr><td>Zusatzfälle, vom DN-Filter bereits aussortiert (02.05.0005/0007/0009)</td><td>1 Treffer „anderes Bauteil“; 2 verworfen, weil ein Zitat nicht wörtlich war (verworfener Vorschlag jeweils „anderes Bauteil“)</td><td>data/qa/ki_messung_lauf1.json</td></tr>
+<tr><td>Strittige Positionen (in Lauf 1 nicht in der Trefferquote)</td><td>8209.003 05.01.4 und 05.01.46 (8 Funde): T2 „echter Widerspruch“, Person B „unklar“; KI 7-mal „echter Widerspruch“, 1-mal „anderes Bauteil“. <span class="tag t-b">BESTÄTIGT</span> In B0b vom Team entschieden: beide „echter Widerspruch“; in Messung v2 mitgezählt</td><td>data/qa/ki_goldstandard.json; docs/decisions.md</td></tr>
+<tr><td>KI wählt „unklar“</td><td>0 von 40</td><td>data/qa/ki_messung_lauf1.json</td></tr>
+<tr><td>Lauf 1</td><td>31 Aufrufe, 41.666 Tokens, Modellzeit 29 s, Wartezeit (Limit) 120 s, 0 technische Fehler</td><td>data/qa/ki_log.jsonl</td></tr>
+<tr><td>Lauf 2</td><td>0 Aufrufe, 40 von 40 Ergebnissen aus dem Cache, gleich Lauf 1</td><td>data/qa/ki_messung_lauf2.json</td></tr>
+<tr><td>Vortest (8 erfundene Fälle)</td><td>Variante A (low) 7/8, B (medium) 7/8 – gewählt A, weil alle echten Widersprüche erkannt</td><td>data/qa/ki_vortest_ergebnis.json</td></tr>
+<tr><td>Stabilitätscheck (A wiederholt)</td><td>1 von 8 Fällen wechselt (V1: „echter Widerspruch“ → „unklar“)</td><td>data/qa/ki_vortest_stabilitaet.json</td></tr>
+<tr><td>Groq-Verbrauch 21.11.2026</td><td>75.627 von 200.000 Tokens, 56 von 1.000 Anfragen</td><td>data/qa/ki_log.jsonl; Limits laut console.groq.com</td></tr>
+</table></div>
+<p class="mu">Keine Aussage zu Zeitersparnis oder Genauigkeit über diese Messung hinaus (Regel R11). 29 Funde sind eine kleine Stichprobe.</p>
+</section>
+
+<section id="verlauf">
+<h2>7. Verlauf: Commits und Entscheidungen</h2>
+<h3>Commits</h3>
+<div class="tw"><table><tr><th>Commit</th><th>Zeit</th><th>Nachricht</th></tr>
+<tr><td><code>b844db9</code></td><td>20.11. 22:31</td><td>Stand nach BMAD-Einrichtung</td></tr><tr><td><code>89ba935</code></td><td>20.11. 22:35</td><td>Originaldaten und .env ausschließen</td></tr><tr><td><code>f9e5819</code></td><td>20.11. 22:50</td><td>Phase 5 fertig, Party-Aufgabe final</td></tr><tr><td><code>1a923fc</code></td><td>20.11. 23:25</td><td>S1: Fehlalarme 02.05.0005/0007/0009 am Original bestätigt</td></tr><tr><td><code>e4fe05e</code></td><td>20.11. 23:39</td><td>P1: Prüfung 1+2, 39/39 Tests grün</td></tr><tr><td><code>ea262c5</code></td><td>21.11. 02:08</td><td>U1: Streamlit-App, Durchstich läuft</td></tr><tr><td><code>3e22fe8</code></td><td>21.11. 02:17</td><td>S2: 12/14 Belege am Original bestätigt</td></tr><tr><td><code>becdda6</code></td><td>21.11. 02:30</td><td>P1b: PDF-Belege seitengenau, alle 14 Funde am Original bestätigt</td></tr><tr><td><code>e08929b</code></td><td>21.11. 02:31</td><td>data/raw ab jetzt ausgeschlossen</td></tr><tr><td><code>40f62e1</code></td><td>21.11. 02:34</td><td>Doku: offizieller Challenge-Text und Entscheidungen</td></tr><tr><td><code>fc81ad9</code></td><td>21.11. 02:39</td><td>Leitplanken: Export Pflicht, Excel ausgeschlossen, Begriffsregel R7</td></tr><tr><td><code>7993e3c</code></td><td>21.11. 03:15</td><td>P2: Prüfungen 3–6, Sortierung, Filter</td></tr><tr><td><code>77467fd</code></td><td>21.11. 03:29</td><td>P3: Risikobericht-Export</td></tr><tr><td><code>6c17f70</code></td><td>21.11. 03:47</td><td>P3b: Entscheidungen im Export, Zeitzone</td></tr><tr><td><code>1548b88</code></td><td>21.11. 06:40</td><td>feat: KI-gestützte Risikoanalyse, Etiketten, Cache und QA-Daten</td></tr><tr><td><code>14a762d</code></td><td>21.11. 07:31</td><td>P4: KI-Gegenprüfung (Groq)</td></tr>
+</table></div>
+<p class="mu">Commit <code>1548b88</code> wurde außerhalb dieser Sitzung angelegt; er enthält den Großteil von P4. <code>14a762d</code> ergänzt Lauf 2 und die korrigierte Messtabelle.</p>
+<h3>Entscheidungen (aus docs/decisions.md)</h3>
+<p class="mu">Hinweis (B0b): Diese Tabelle ist eine Kopie mit Stand vor B0b und berücksichtigt die Änderungen aus T3, T6 und B0b nicht. Maßgeblich ist docs/decisions.md (Lücke L22).</p>
+<details><summary>Alle 52 Entscheidungen anzeigen</summary>
+<div class="tw"><table><tr><th>Datum</th><th>Entscheidung</th><th>Begründung</th><th>Quelle</th></tr>
+<tr><td>20.11.2026</td><td>Projektwurzel ist <code>Construction Hackathon/</code>; das Paket (src/, input/, data/raw, data/parsed) liegt dort</td><td><code>_bmad/</code> liegt dort; alle Pfade an einem Ort</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Zeitbudget Phasen 1–4: höchstens 60 Minuten</td><td>Abgabe 22.11.2026, 12:00</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Leitplanken in docs/guardrails.md; <code>CLAUDE.md</code> importiert <code>AGENTS.md</code> und <code>docs/guardrails.md</code> (Ladeweg A)</td><td>Regeln in jeder Claude-Code-Sitzung geladen, nur an einer Stelle gepflegt; @-Importe sind dokumentiert (code.claude.com/docs/en/memory, &quot;Import additional files&quot;)</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Phase 3 (Overrides pro Rolle) entfällt</td><td>Regeln kommen über CLAUDE.md in jede Sitzung</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Leitplanken in drei Teile: inhaltliche Regeln (immer), Planung, Umsetzung</td><td>Umsetzung braucht Freigabe pro Aufgabe statt pro Datei</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Maßgeblich für die LV-Position ist <code>parse()</code> aus src/lv_parser.py; alle_LVs_geparst.xlsx ist nur eine Ansicht</td><td>ein Vertrag, eine Quelle</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Fund-ID <code>&quot;&lt;Prüfkatalog-Nr&gt;\|&lt;Datei&gt;\|&lt;OZ&gt;&quot;</code>, Speicherformat JSON</td><td>deterministisch, wiederholbar</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Rechenprüfung Menge × EP nicht im ersten Prototyp</td><td>bepreiste GAEB-Dateien rechnet die AVA-Software; Vorabprüfung fand keine Abweichung</td><td>bmad_prompt.txt</td></tr><tr><td>20.11.2026</td><td>Prüfkatalog gilt nur in input/pruefkatalog.md, Rohdaten nur in data/raw/; Dubletten nach archiv/dubletten/ verschoben</td><td>keine Dubletten als Quelle, nichts gelöscht</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Fund-ID mit normalisierter OZ (wie <code>key()</code>); höchstens ein Fund je Prüfung, Datei und normalisierter OZ; doppelte OZ = ein Fund mit mehreren Positionen</td><td>gleiche Position in verschiedenen Schreibweisen der OZ ergibt dieselbe ID</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Party „lv-challenge-team“ als Standard-Party, <code>memory = false</code>, Modus session (Standard)</td><td>feste Rollen mit Übergaben und Definition of Done; keine unangekündigten Schreibzugriffe (R12)</td><td>Team, Chat; <code>_bmad/custom/bmad-party-mode.toml</code></td></tr><tr><td>20.11.2026</td><td>Skeptiker prüft Belege unabhängig vom Parser am Original</td><td>ein Fund darf nicht nur gegen die eigene Parser-Ausgabe bestätigt werden</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Erster Durchstich: Prüfung Nr. 1 und 2 aus input/pruefkatalog.md (Kurz-/Langtext bei DN und Betonfestigkeitsklasse)</td><td>vorgeprüfte Beispiele und ein Fehlalarm als Testfälle vorhanden</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Durchstich rein regelbasiert und deterministisch; KI-Gegenprüfung erst, wenn ein API-Zugang geklärt ist</td><td>kein API-Zugang geklärt</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Ergebnisansicht als kleine Streamlit-App</td><td>die App muss LVs importieren und parse() aufrufen (input/challenge_A_original.md); eine statische HTML-Seite kann das nicht; Streamlit ist ein Python-Paket ohne Server oder Datenbank (R8)</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Status Bestätigen/Verwerfen als JSON je LV in data/findings/, nie in data/raw/</td><td>Rohdaten bleiben unverändert</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Ausgangspunkt der Prüflogik: src/heuristik_widerspruch_v0.py (Referenz, darf übernommen oder verbessert werden)</td><td>reproduziert das Blatt „Widerspruch-Kandidaten“</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>DN nur melden, wenn der Langtext genau einen DN-Wert nennt</td><td>entfernt Fehlalarme durch DN-Werte von Anbauteilen (02.05.0005, 02.05.0007, 02.05.0009); alle 5 Positiv-Tests bleiben (Prüflauf 20.11.2026). Bestätigung als Fehlalarm am Original steht aus</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Eingabeumfang Stufe 1: die 5 Testdateien; Stufe 2: alle LVs mit je einer Quelle (32 Dateien: DATEIEN-Liste der Heuristik plus LV_*.pdf), ungeprüfte Kandidaten mit Status „offen“</td><td>keine doppelten Funde für dasselbe LV in zwei Formaten</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Die App prüft immer genau ein hochgeladenes LV</td><td>dort entstehen keine Dubletten</td><td>Team, Chat</td></tr><tr><td>20.11.2026</td><td>Party-Arbeit ohne Initiative („lose“)</td><td>–</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>Offizieller Challenge-Text: input/challenge_A_offiziell.md</td><td>vom Team als offizieller Text geliefert; enthält Meilensteine und Deliverables</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>Export des Risikoberichts gehört zum Pflichtumfang (R8)</td><td>Deliverable „Demo … with upload and risk report“ (input/challenge_A_offiziell.md); der Kernablauf läuft</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>Meilenstein 4 (historische Projektdaten) bleibt ausgeschlossen (R8)</td><td>im offiziellen Text „optional“</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>Reihenfolge: P1b, U1b, P2 (Prüfungen Nr. 3–6, Fundliste nach Priorität), dann Export des Risikoberichts; nach jeder Aufgabe anhalten</td><td>–</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>Fehlende Positionen: Scope-Erweiterung (R8) nach P2 und Risikobericht – Prüfung „mögliche fehlende Leistung“ als Risikohinweis (nicht als Fehler), höchstens 5 Paarregeln auf LV-Ebene, Hinweistext „prüfen, ob in anderem Gewerk/LV enthalten“</td><td>Challenge-Text nennt „missing items“ als Priorität; Paarregeln halten die Prüfung klein und belegbar</td><td>Team, Chat; docs/guardrails.md, Abschnitt D</td></tr><tr><td>21.11.2026</td><td>Nachtragspotenzial: erlaubt „mögliches Nachtragspotenzial“, „möglicher Streitpunkt in der Ausführung“; verboten „Anspruch“, „berechtigt“, „durchsetzbar“, Paragraphen-Verweise; gilt für P2, App und Bericht</td><td>Challenge-Text verlangt „change order potential“; R7 verbietet Aussagen zu Nachtragsansprüchen</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>Excel-Import bleibt im Prototyp ausgeschlossen, solange die Orga keine Beispieldatei liefert</td><td>Datensatz ohne Excel-Datei; Challenge-Text: „GAEB preferred“</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>docs/challenge.md verweist auf input/challenge_A_offiziell.md</td><td>offizieller Text ersetzt die Team-Fassung</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>data/raw/ und .env nicht im Repo (.gitignore); Repo vorerst nicht auf GitHub</td><td>Originaldaten bleiben lokal</td><td>Team, Chat; Commit e08929b</td></tr><tr><td>21.11.2026</td><td>E1: „Menge 0“ bei vorhandener Einheit ist ein Risikohinweis, Priorität 3; Befundtext „Menge 0: Die Position geht nicht in die Angebotssumme ein, die Ausführungsmenge ist offen.“ Menge 0 ohne Einheit bleibt Teil des Fehlers „Einheit fehlt“</td><td>ersetzt die Annahme „Unklarheit, Priorität 3“ aus P2</td><td>Team, Chat (Review P2); <code>MENGE_0</code> in src/pruefung_formal.py</td></tr><tr><td>21.11.2026</td><td>E2: [ORT_024] LV24069.D86 – die 38 Funde Nr. 3 (Satz 21: Menge 00000000000, keine Einheit, EP vorhanden) bleiben bestehen; sie verteilen sich auf Nachtrag 1–6 (7/1/19/1/2/8). Bei Dateien der Austauschphase 86 (.D86/.X86) zeigt die App oben: „Auftrags-LV (Austauschphase 86), kein Ausschreibungs-LV. Nachtragspositionen enthalten oft nur einen Einheitspreis ohne Menge.“ Kein Fund wird unterdrückt</td><td>Verteilung am Original nachgezählt (docs/pruefprotokoll.md, S2 zu P2)</td><td>Team, Chat (Review P2)</td></tr><tr><td>21.11.2026</td><td>E3: Grenze Prüfung Nr. 5 – „Nur Einh.-Pr.“ steht bei PDF nur in der Mengenzeile, die der Parser nicht ausgibt; der Parser bleibt unverändert. Betroffen: LV_14_Sanitaeranlage.pdf 4.2 und 4.3, LV_14a_Betonkernaktivierung.pdf .2, LV_14c_Industriebodenheizung.pdf .9 (art = „Bedarf, Wahl“, art_roh = „Wahlposition 1.1 zu 1.0“). Sie werden weder über Nr. 5 noch über eine andere Prüfung gemeldet</td><td>ohne wörtlichen Beleg kein Fund (R5); Nr. 5 wertet in art_roh nur „Bedarfsposition“/„Eventualposition“ aus</td><td>Team, Chat (Review P2); Prüflauf 21.11.2026</td></tr><tr><td>21.11.2026</td><td>P3b: Entscheidung aus der App (bestätigt / verworfen / Rückfrage stellen) im Export vorausgefüllt; App bekommt den Status „Rückfrage stellen“; Zeitpunkt mit Zeitzone (MEZ/MESZ)</td><td>Auftrag P4 Teil A</td><td>Team, Chat; Commit 6c17f70</td></tr><tr><td>21.11.2026</td><td>P4: Effort über <code>output_config={&quot;effort&quot;: &quot;medium&quot;}</code></td><td>Parametername laut platform.claude.com/docs/en/build-with-claude/effort.md (abgerufen 21.11.2026); im installierten SDK anthropic 2.12.0 vorhanden</td><td>Team, Chat (B3); Doku</td></tr><tr><td>21.11.2026</td><td>P4: Serverseitige Ausweichlösung bei Ablehnung (<code>fallbacks=&quot;default&quot;</code>, Beta <code>server-side-fallback-2026-07-01</code>) eingeschaltet; das antwortende Modell wird in Log, Cache und Export vermerkt; abschaltbar über <code>FALLBACKS = None</code> in src/ki_pruefung.py</td><td>Empfehlung der Claude-API-Doku für claude-sonnet-5-5 [ANNAHME – vom Team abgelehnt, siehe Zeile „P4: Ausweichmodell aus“]</td><td>Claude-API-Skill</td></tr><tr><td>21.11.2026</td><td>P4: Im Cache steht jede Antwort, die nach der Prüfkette ein Ergebnis hat (auch verworfene und unlesbare); die Prüfkette läuft beim Lesen neu</td><td>sonst würde ein zweiter Lauf verworfene Funde erneut abfragen (B10: 0 Aufrufe) [ANNAHME – vom Team präzisiert, siehe Zeile „P4: Cache“]</td><td>Auftrag B7/B10</td></tr><tr><td>21.11.2026</td><td>P4: Goldstandard data/qa/ki_goldstandard.json – zählend nur die 5 Positiv-Tests aus T2 als „echter Widerspruch“ („von Hand vorgeprüfte echte Fälle“, input/pruefkatalog.md); alle übrigen 32 Funde Nr. 1/2 „offen“</td><td>Regel B9: nur am Original geprüfte Einordnungen von vor dem KI-Lauf</td><td>Team, Chat (B9)</td></tr><tr><td>21.11.2026</td><td>P4: Ausweichmodell aus (<code>FALLBACKS = None</code>); es antwortet immer genau das Modell aus der .env; eine Ablehnung zeigt die App als „KI-Antwort abgelehnt“, der Regel-Fund bleibt</td><td>–</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>P4: Cache – echte Modellantworten mit ihrem Status (auch verworfene und unlesbare); technische Fehler (Zeitüberschreitung, Netzfehler, 429 nach allen Wiederholungen) nicht, sie werden beim nächsten Klick neu versucht</td><td>–</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>P4: KI über Groq (Free Tier) statt Anthropic: KI_ANBIETER=groq, KI_MODELL=openai/gpt-oss-120b, OpenAI-kompatibler Endpunkt https://api.groq.com/openai/v1 (Paket <code>openai</code>); Anthropic-Zweig bleibt (src/ki_client.py)</td><td>kein Anthropic-Guthaben</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>P4: Groq-Parameter temperature 0, seed, response_format json_schema strict (Schema B4), reasoning_effort low, include_reasoning false; Zeitlimit 60 s; bei 429 retry-after einhalten, höchstens 3 Wiederholungen; retry-after über 120 s: Abbruch statt Warten</td><td>Groq-Doku (console.groq.com/docs: structured-outputs, reasoning, openai, api-reference, rate-limits; abgerufen 21.11.2026). Hinweis: Die Doku empfiehlt für Reasoning-Modelle temperature 0,5–0,7; gesetzt ist 0 laut Team</td><td>Team, Chat; Doku</td></tr><tr><td>21.11.2026</td><td>P4: Goldstandard ergänzt um die am Original bestätigten Fehlalarme 501-24-01 02.05.0005/0007/0009 („anderes Bauteil“, regel_fund=false); Etikettenliste data/qa/etiketten_person_b.xlsx (14 Positionen) für Person B</td><td>Messung soll zeigen, ob die KI Fehlalarme erkennt</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>P4: Prompt P4-v2 – „anderes Bauteil“ nur, wenn der zweite Wert ausdrücklich einem anderen, benannten Bauteil zugeordnet ist; Zubehör ohne eigenen Wert macht kein anderes Bauteil; Begründung nennt die Bauteile beider Werte; im Zweifel „unklar“, nie „anderes Bauteil“ raten. Eingefroren (SHA-256 27bbf1be…b2c2 in src/ki_pruefung.py); Änderung nur mit neuer Version und neuer Messung</td><td>Kurztest: echter Widerspruch als „anderes Bauteil“ eingeordnet – die gefährliche Fehlerrichtung</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>P4: Vortest mit 8 erfundenen Positionen (data/qa/ki_vortest.json), P4-v2, temperature 0: Variante A (reasoning_effort low) 7/8 Treffer, alle 3 echten Widersprüche erkannt, 10.142 Tokens; Variante B (medium) 7/8, aber V1 (echter Widerspruch) als „anderes Bauteil“, 12.729 Tokens. Gewählt: A (low). Vortest gesamt 22.871 Tokens (Budget 25.000)</td><td>Regel des Teams: meiste Treffer, bei Gleichstand weniger Tokens; alle echten Widersprüche erkannt</td><td>Team, Chat; data/qa/ki_vortest_ergebnis.json</td></tr><tr><td>21.11.2026</td><td>P4: Die 3 bestätigten Fehlalarme (501-24-01 02.05.0005/0007/0009) werden in Schritt 4 zusätzlich gemessen – getrennter Messaufruf, so wie die Regel sie ohne DN-Filter melden würde; in der Messtabelle getrennt als „Zusatzfälle, vom DN-Filter bereits aussortiert“; nicht in der App</td><td>–</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>P4: Stabilitätscheck – Variante A (P4-v2, low) mit den 8 Vortest-Fällen einmal ohne Cache wiederholt: 1 von 8 Fällen wechselt (V1: „echter Widerspruch“ → „unklar“), 9.981 Tokens. Schwelle für den Vermerk „nicht stabil“ (2 Fälle) nicht erreicht; Prompt unverändert</td><td>–</td><td>Team, Chat; data/qa/ki_vortest_stabilitaet.json</td></tr><tr><td>21.11.2026</td><td>P4: App zeigte „Prompt P4-v1“: Die Seite war seit dem Kurztest nicht neu ausgeführt (Streamlit führt das Skript nach Codeänderungen nicht von selbst aus). Nach Neustart überall P4-v2; App, Cache-Schlüssel, Log und Export lesen <code>PROMPT_VERSION</code> aus src/ki_pruefung.py</td><td>–</td><td>Team, Chat (Zusatz 1)</td></tr><tr><td>21.11.2026</td><td>P4: Etiketten von Person B – in Numbers bearbeitet (data/qa/Leistungsverzeichnis Etiketten.numbers, gesichert 05:59:48), per AppleScript als Kopie nach data/qa/etiketten_person_b_export.xlsx exportiert; Blatt „Etiketten“ gegen die Vorlage geprüft (Kopf und 14 Zeilen gleich); 14 von 14 Zeilen gültig; übernommen mit Quelle „Person B, am Original, vor dem KI-Lauf“</td><td>vor dem ersten KI-Aufruf zu echten Positionen</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>P4: Weicht Person B bei einer T2-Position vom Goldstandard ab, wird nichts überschrieben: Position „strittig“, beide Einordnungen mit Quelle, in der Messung getrennt (nicht in der Trefferquote). Betroffen: 8209.003 05.01.4 und 05.01.46 (T2: „echter Widerspruch“, Person B: „unklar“) in X83, D83, D86 und HEM2301-2_Gesamt-LV.pdf; T2 3.3.3 von Person B bestätigt</td><td>–</td><td>Team, Chat (Zusatz 2)</td></tr><tr><td>21.11.2026</td><td>P4: Zero Data Retention bei Groq nicht aktiv (Schalter ließ sich nicht aktivieren). Groq speichert laut Doku Ein- und Ausgaben nicht standardmäßig, kann sie aber für Fehlersuche und Missbrauchsprüfung bis zu 30 Tage protokollieren (Quelle: console.groq.com/docs/your-data, Stand 21.11.2026).</td><td>–</td><td>Team, Chat</td></tr><tr><td>21.11.2026</td><td>P4: data/ki_cache/ wird committet (wie in B7 vorgesehen: Demo ohne Internet); Repo lokal, ein späterer GitHub-Upload nur privat. data/qa/*.numbers und /Risikobericht_*.xlsx nicht im Repo (.gitignore)</td><td>Cache enthält Auszüge aus den Positionstexten</td><td>Team, Chat</td></tr>
+</table></div>
+</details>
+</section>
+
+<section id="offen">
+<h2>8. Offene Punkte und Risiken</h2>
+<div class="tw"><table>
+<tr><th>Punkt</th><th>Risiko</th><th>Vorschlag</th></tr>
+<tr><td><span class="tag t-o">OFFEN</span> KI stuft echte Widersprüche als „anderes Bauteil“ ein (6 Funde)</td><td>Wer sich auf den KI-Vorschlag verlässt, verwirft einen echten Fehler.</td><td>In der Demo den KI-Vorschlag ausdrücklich als zweite Meinung zeigen. Team prüft 3.3.3 und 5.3.3 noch einmal am Original: Die KI ordnet C25/30 der „Bettung“ zu, C20/25 der „Rückenstütze“ (Regel R10: nicht selbst entscheiden).</td></tr>
+<tr><td><span class="tag t-b">BESTÄTIGT</span> Strittige Positionen 05.01.4 / 05.01.46 – erledigt in B0b</td><td>T2 und Person B ordneten verschieden ein.</td><td>Vom Team entschieden: beide „echter Widerspruch“; Goldstandard ergänzt (Person B bleibt als Herkunft), Messung v2 ohne KI-Aufruf neu ausgewertet.</td></tr>
+<tr><td>Gleiche Position, verschiedene KI-Antworten je Datei (3.3.3, 5.3.3)</td><td>Leicht abweichende Texte (PDF/GAEB) ergeben andere Antworten.</td><td>Im Bericht offen zeigen; der Cache friert je Text eine Antwort ein.</td></tr>
+<tr><td>KI wählt nie „unklar“</td><td>Unklare Fälle erscheinen als „echter Widerspruch“ – unkritisch, weil sie zur Rückfrage führen.</td><td>Beobachten; Prompt nur mit neuer Version und neuer Messung ändern (P4-v2 eingefroren).</td></tr>
+<tr><td>Zero Data Retention bei Groq nicht aktiv</td><td>Groq kann Ein- und Ausgaben bis zu 30 Tage protokollieren (console.groq.com/docs/your-data, Stand 21.11.2026).</td><td>Für echte Kundendaten einen Anbieter mit abgeschalteter Speicherung wählen.</td></tr>
+<tr><td><span class="tag t-o">OFFEN</span> Demo-Fehler für Prüfung Nr. 4 (T4)</td><td>Im Datensatz gibt es keinen Fall „OZ doppelt“.</td><td>Fehler gezielt in eine Kopie einbauen (nie in data/raw/); wer, welche Datei: offen.</td></tr>
+<tr><td><span class="tag t-o">OFFEN</span> Prüfung „mögliche fehlende Leistung“</td><td>Freigegeben, aber nicht gebaut.</td><td>Höchstens 5 Paarregeln als Risikohinweis – nur auf Auftrag des Teams.</td></tr>
+<tr><td><span class="tag t-b">BESTÄTIGT</span> Meilenstein 5 (What-if) – entschieden</td><td>Im Challenge-Text genannt.</td><td>Im Umfang, Backlog B6 (B0a).</td></tr>
+<tr><td>Alle weiteren offenen Punkte</td><td>Lückenprotokoll L1–L29 mit Ziel und Status.</td><td>Siehe docs/luecken.md und die Reihenfolge in docs/backlog.md (B1–B8).</td></tr>
+<tr><td><span class="tag t-o">OFFEN</span> Fragen an die Orga</td><td>Daten „faulty BoQ items“, historische Daten, Preiskataloge und eine Excel-Beispieldatei fehlen.</td><td>Siehe docs/open-questions.md.</td></tr>
+<tr><td>Groq-Tageslimit</td><td>Bei 200.000 Tokens pro Tag reicht das Kontingent für wenige volle Läufe.</td><td>Demo aus dem Cache zeigen (data/ki_cache/ ist im Repo).</td></tr>
+</table></div>
+</section>
+
+<section id="bilder">
+<h2>9. Bildschirmfotos</h2>
+<p class="mu">Die Bildschirmfotos zeigen LV-Ausschnitte des Datensatzes und sind deshalb nicht in diesem Repo.</p>
+</section>
+
+<section id="soll-ist">
+<h2>10. Soll-Ist-Abgleich (B0b)</h2>
+<p>Kurzfassung aus docs/abdeckung.md: Soll sind der Challenge-Text (input/challenge_A_offiziell.md) und der Prüfkatalog (input/pruefkatalog.md). „Fertig“ heißt umgesetzt <em>und</em> nach Qualitätsstandard E2 abgenommen; deshalb stehen die laufenden Prüfungen Nr. 1–6 noch auf „offen“ (Lücke L17). <span class="tag t-b">BESTÄTIGT</span></p>
+<div class="tw"><table>
+<tr><th>Bereich</th><th>fertig</th><th>offen</th><th>Backlog</th></tr>
+<tr><td>Einlesen (PDF, GAEB XML, GAEB 90)</td><td>PDF und GAEB; 43 von 44 Dateien lesbar</td><td>Excel-Import</td><td>B4</td></tr>
+<tr><td>Fehler: Widersprüche in der Position</td><td>–</td><td>Nr. 1, 2 laufen in App und Export, E2 noch nicht erfüllt; KI-Gegenprüfung nur als Vorschlag</td><td>B1, B5</td></tr>
+<tr><td>Fehler: Formales (Menge/Einheit, OZ doppelt)</td><td>–</td><td>Nr. 3, 4 laufen, E2 noch nicht erfüllt</td><td>B1</td></tr>
+<tr><td>Fehler: Zulage ohne Grundposition, Doppelpositionen, Rechenfehler</td><td>–</td><td>Nr. 15, 16, 17 geplant</td><td>B1</td></tr>
+<tr><td>Fehler: Tippfehler, Widersprüche zwischen Positionen</td><td>–</td><td>geplant (KI)</td><td>B5</td></tr>
+<tr><td>Fehlende Leistungen</td><td>–</td><td>höchstens 5 Paarregeln als Risikohinweis</td><td>B3</td></tr>
+<tr><td>Risiken und Nachtragspotenzial</td><td>–</td><td>Nr. 5, 6 laufen (E2 offen); Nr. 7–14, 18 geplant</td><td>B1, B2</td></tr>
+<tr><td>Meilenstein 4: historische Projektdaten</td><td>–</td><td>bepreiste Dateien und Nachträge im Datensatz</td><td>B3, B6</td></tr>
+<tr><td>Meilenstein 5: What-if</td><td>–</td><td>Zuschlags-Rechner, What-if nur mit Eingaben des Kalkulators</td><td>B6</td></tr>
+<tr><td>Deliverable: Web-App mit Upload und Risikobericht</td><td>Upload, Fundliste, Belege, Entscheidung, Export .xlsx</td><td>Demo-LV mit je einem Fall pro Prüfung</td><td>B7</td></tr>
+<tr><td>Deliverable: Pitch aus Kalkulator-Sicht</td><td>–</td><td>Pitch</td><td>B8</td></tr>
+<tr><td>Gleiche Eingabe, gleiches Ergebnis (E14)</td><td>Doppellauf-Test grün</td><td>Prüfstand im Bericht vollständig nennen (L24)</td><td>nächster Block</td></tr>
+</table></div>
+</section>
+
+<section id="prozess">
+<h2>11. Prozess-Abgleich P1–P4</h2>
+<p>Was wie vereinbart lief und was nicht. Quellen: git log, docs/decisions.md, docs/luecken.md. <span class="tag t-b">BESTÄTIGT</span></p>
+<div class="tw"><table>
+<tr><th>Schritt</th><th>wie vereinbart</th><th>nicht wie vereinbart</th></tr>
+<tr><td>P1 / U1 / S1 / S2</td><td>Prüfung Nr. 1 und 2 regelbasiert (<code>e4fe05e</code>); Fehlalarme 02.05.0005/0007/0009 am Original bestätigt (<code>1a923fc</code>); Belege am Original geprüft, zuletzt alle 14 (<code>3e22fe8</code>, <code>becdda6</code>)</td><td>Beim App-Durchstich (<code>ea262c5</code>) wurde eine Statusdatei in data/findings/ mitcommittet, deren menschliche Herkunft nicht belegt ist (L19; in B0b nach archiv/findings/ verschoben)</td></tr>
+<tr><td>P2 / P3 / P3b</td><td>Prüfungen Nr. 3–6, Sortierung, Filter (<code>7993e3c</code>); Risikobericht-Export (<code>77467fd</code>); Entscheidungen im Export, Zeitzone (<code>6c17f70</code>)</td><td>Rollenkette nicht eingehalten, es fehlten Rollen für Prioritäten, Praxissicht und Kosten (L9, behoben in B0a); Stufe-1-Prüfungen der ersten Planung fielen ohne Begründung weg (L1)</td></tr>
+<tr><td>P4</td><td>KI-Gegenprüfung über Groq mit Cache, eingefrorenem Prompt P4-v2 und Goldstandard vor dem KI-Lauf (<code>14a762d</code>); Stand-Bericht (<code>70fb554</code>)</td><td>Commit <code>1548b88</code> entstand außerhalb des vereinbarten Ablaufs (nicht von der Party angelegt; Inhalt geprüft, L3); die Messtabelle „je Position“ ließ uneinheitliche Positionen weg (L10, in B0b als ungünstigster Fall neu ausgewertet)</td></tr>
+<tr><td>B0a / B0b</td><td>Leitplanken E, Prüfsummen data/raw (<code>1528e3e</code>); B0b mit Rollenkette, Dateiansage und Freigabe vor jeder Änderung</td><td>In B0b trug die Party einen eigenen Prüfbefehl in Leitplanke E11 ein und nahm ihn vor dem Commit wieder heraus (die Leitplanken ändert nur das Team)</td></tr>
+</table></div>
+</section>
+
+<section id="team">
+<h2>12. Unser Agenten-Team</h2>
+<p>Acht Rollen arbeiten in fester Reihenfolge (Regel E1). Je Rolle ein Beispiel, wo sie gewirkt hat, und eines, wo sie hätte wirken müssen. Die Rollen Prioritäten-Auditor, Kalkulator und Wirtschaftlichkeit gibt es erst seit B0a (L9). Die Einschätzungen des Kalkulators sind simulierte Praxissicht [ANNAHME], kein Ersatz für echte Kalkulatoren. <span class="tag t-b">BESTÄTIGT</span></p>
+<div class="tw"><table>
+<tr><th>Rolle</th><th>Aufgabe</th><th>hat gewirkt</th><th>hätte wirken müssen</th></tr>
+<tr><td>🛡️ Scope-Wächter</td><td>prüft jeden Vorschlag gegen Regeln und Umfang</td><td>B0b: In den Leitplanken nur geändert, was das Team beauftragt hat; Rückfrage zu T1 gestellt</td><td>Leitplanken D widersprachen bis B0a einer Teamentscheidung (L4)</td></tr>
+<tr><td>📋 Prioritäten-Auditor</td><td>Backlog, Stufen, Abdeckung; nimmt Blöcke ab</td><td>B0b: Reihenfolge B0b.5 vor B0b.6 und B0b.7 vor jeder Browser-Prüfung durchgesetzt</td><td>Weggefallene Stufe-1-Prüfungen (L1) – die Rolle gab es damals noch nicht</td></tr>
+<tr><td>🧮 Kalkulator (Beobachter)</td><td>Praxissicht, urteilt „nützlich / Rauschen / unklar“</td><td>B0b: verlangte einen Warnhinweis, der in einem Satz verständlich ist</td><td>Sortierung nach Geld innerhalb einer Stufe fehlt (L7)</td></tr>
+<tr><td>🗂️ Daten &amp; Parser</td><td>Parser-Ausgabe, Validierung, Datenvertrag</td><td>B0b: Prüfsummen 44/44; im selben LV belegt, dass 139,7 mm zu DN 125 gehört (HEM2301-2)</td><td>Datenvertrag zeigt für 05.01.4 drei Belege, die Ausgabe zwei (L21)</td></tr>
+<tr><td>🔎 Prüflogik</td><td>Prüfklassen mit wörtlichem Beleg</td><td>DN-Filter entfernt Fehlalarme an Anbauteilen (S1); Doppellauf-Test (B0b)</td><td>Nr. 1–6 erfüllen Standard E2 noch nicht (L17)</td></tr>
+<tr><td>💶 Wirtschaftlichkeit &amp; Kosten</td><td>Kostenwirkung, Preise nur mit Quelle</td><td>B0b: Kostenwirkung im Prüfkatalog als [OFFEN] statt erfundener Werte (R11)</td><td>Sortierung nach Geld (L7)</td></tr>
+<tr><td>🧐 Qualität &amp; Skeptiker</td><td>prüft jeden Beleg am Original</td><td>B0b: 139,7 mm und 05.01.45–47 in allen 4 Formaten am Original; Leistungsverzeichnis.pdf und Angebot AN24-0305.pdf als dieselbe LV belegt</td><td>Statusdatei ohne menschliche Herkunft in data/findings/ (L19)</td></tr>
+<tr><td>🖥️ Oberfläche &amp; Bericht</td><td>Fundliste, Belegansicht, Export</td><td>B0b: Regel E13 in Fundliste, Detailansicht und Export umgesetzt</td><td>KI-Quelle (Cache/API) fehlt im Export (L25)</td></tr>
+</table></div>
+</section>
+
+<section id="regeln">
+<h2>13. Regeln E1–E14 in je einem Satz</h2>
+<ol>
+<li><strong>E1</strong> Jeder Block durchläuft die feste Rollenkette vom Scope-Wächter bis zur Abnahme durch den Auditor; keine Rolle wird übersprungen.</li>
+<li><strong>E2</strong> Jede Prüfung braucht Datenauswertung, Regel mit Stufe und Empfehlung, Tests, Kostenwirkung, Stichprobe am Original, Anzeige, Katalogeintrag, Kalkulator-Urteil, Abnahme und einen grünen Doppellauf-Test.</li>
+<li><strong>E3</strong> Fehler vor Kalkulationsrisiken vor Nachtragspotenzial vor Unklarheiten; gestrichen wird am Ende des Backlogs, nicht an der Qualität.</li>
+<li><strong>E4</strong> docs/backlog.md legt die Reihenfolge fest; gearbeitet wird nur an Backlog-IDs.</li>
+<li><strong>E5</strong> Nichts fällt still weg: jede Streichung steht mit Grund in docs/decisions.md.</li>
+<li><strong>E6</strong> Lücken werden nicht still behoben, sondern in docs/luecken.md eingetragen; das Team entscheidet.</li>
+<li><strong>E7</strong> Jeder Block endet mit einem Fertig-Check (Prüfsummen, Tests, Doppellauf, Browser, Doku) und einem Bericht.</li>
+<li><strong>E8</strong> Ab Sonntag, 22.11.2026, 06:00 Uhr nur noch Fehlerbehebung, Demo und Pitch.</li>
+<li><strong>E9</strong> Keine Zahl ohne Quelle; Preise nur aus bepreisten Dateien, Zuschläge nur als Eingabe des Kalkulators.</li>
+<li><strong>E10</strong> Der Kalkulator beobachtet nur und entscheidet nichts.</li>
+<li><strong>E11</strong> Prüfsummen und Anzahl der 44 Originaldateien werden bei jedem Fertig-Check verglichen (.DS_Store zählt nicht).</li>
+<li><strong>E12</strong> Original vor Parser-Ausgabe vor abgeleiteten Daten; Status in data/findings/ stammen nur von Menschen.</li>
+<li><strong>E13</strong> Die KI darf nie entwarnen: ein KI-Vorschlag ändert weder Priorität, Kategorie, Sortierung noch Hervorhebung eines Funds.</li>
+<li><strong>E14</strong> Gleiche Eingabe mit gleichem Stand liefert dieselben Funde in derselben Reihenfolge; die KI bleibt nur über den Cache gleich.</li>
+</ol>
+</section>
+
+<footer>Erstellt aus den Projektdateien (docs/, data/qa/, git log). Keine externen Ressourcen; die Seite läuft offline.</footer>
+</main>
+</body>
+</html>

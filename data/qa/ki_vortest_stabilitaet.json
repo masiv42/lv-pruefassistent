@@ -1,0 +1,169 @@
+{
+  "prompt_version": "P4-v2",
+  "modell": "openai/gpt-oss-120b",
+  "anbieter": "groq",
+  "zeit": "2026-11-21T05:54:18+01:00",
+  "varianten": {
+    "A": {
+      "reasoning_effort": "low",
+      "faelle": [
+        {
+          "id": "V1",
+          "soll": "echter Widerspruch",
+          "ki": "unklar",
+          "status": "KI-Vorschlag gültig",
+          "treffer": false,
+          "begruendung": "Der Kurztext nennt eindeutig die Nennweite DN 150. Der Langtext enthält sowohl DN 150 als auch DN 200, sodass nicht klar ist, welcher Wert für das Hauptbauteil gilt.",
+          "rueckfrage": "Bitte klären Sie, ob die Nennweite DN 150 oder DN 200 für das zu liefernde Gussrohr gilt.",
+          "tokens": 1260,
+          "dauer_s": 1.13
+        },
+        {
+          "id": "V2",
+          "soll": "echter Widerspruch",
+          "ki": "echter Widerspruch",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Im Kurztext wird das Rohr mit Nennweite DN 125 angegeben, im Langtext wird zusätzlich die Nennweite DN 160 genannt, beide beziehen sich auf dasselbe KG‑Rohr.",
+          "rueckfrage": "Bitte klären Sie, welche Nennweite (DN 125 oder DN 160) für das KG‑Rohr verbindlich ist.",
+          "tokens": 1284,
+          "dauer_s": 1.05
+        },
+        {
+          "id": "V3",
+          "soll": "echter Widerspruch",
+          "ki": "echter Widerspruch",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Im Kurztext wird die Nennweite des Gewinderohrs mit DN 80 angegeben, im Langtext wird dieselbe Komponente mit Nennweite DN 65 beschrieben.",
+          "rueckfrage": "Bitte klären Sie, welche Nennweite (DN 80 oder DN 65) für das Gewinderohr Stahl verzinkt korrekt ist.",
+          "tokens": 1190,
+          "dauer_s": 0.84
+        },
+        {
+          "id": "V4",
+          "soll": "anderes Bauteil",
+          "ki": "anderes Bauteil",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Der Kurztext nennt die Nennweite der Absperrklappe (DN 300). Im Langtext wird zusätzlich ein Übergangsstück mit Nennweite DN 250 erwähnt, das ein separates Bauteil ist.",
+          "rueckfrage": "",
+          "tokens": 1262,
+          "dauer_s": 0.95
+        },
+        {
+          "id": "V5",
+          "soll": "anderes Bauteil",
+          "ki": "anderes Bauteil",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Der Kurztext gibt die Nennweite des Hauptanschlusses (DN 32) an, während der Langtext für die Heizkreisabgänge eine andere Nennweite (DN 20) nennt. Jeder Wert bezieht sich auf ein eindeutig benanntes Bauteil.",
+          "rueckfrage": "",
+          "tokens": 1276,
+          "dauer_s": 0.83
+        },
+        {
+          "id": "V6",
+          "soll": "Bereichs- oder Mehrfachangabe",
+          "ki": "Bereichs- oder Mehrfachangabe",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Der Kurztext nennt die Nennweite DN 110, der Langtext gibt einen zulässigen Wertebereich DN 90/110 an. Beide Angaben beziehen sich auf dasselbe Bauteil, das Kabelschutzrohr.",
+          "rueckfrage": "",
+          "tokens": 1185,
+          "dauer_s": 0.88
+        },
+        {
+          "id": "V7",
+          "soll": "Bereichs- oder Mehrfachangabe",
+          "ki": "Bereichs- oder Mehrfachangabe",
+          "status": "KI-Vorschlag gültig",
+          "treffer": true,
+          "begruendung": "Der Kurztext nennt die Festigkeitsklasse C20/25, während der Langtext einen zulässigen Bereich von C16/20 bis C25/30 angibt, in dem C20/25 enthalten ist.",
+          "rueckfrage": "",
+          "tokens": 1272,
+          "dauer_s": 0.79
+        },
+        {
+          "id": "V8",
+          "soll": "unklar",
+          "ki": "echter Widerspruch",
+          "status": "KI-Vorschlag gültig",
+          "treffer": false,
+          "begruendung": "Der Kurztext bezieht sich auf einen Leitungsabschnitt mit DN 80, während der Langtext zusätzlich einen Planwert von DN 100 nennt, was unterschiedliche Nennweiten für denselben Leitungsabschnitt impliziert.",
+          "rueckfrage": "Bitte klären Sie, ob die zu liefernde Nennweite DN 80 oder DN 100 beträgt.",
+          "tokens": 1252,
+          "dauer_s": 1.04
+        }
+      ],
+      "tokens": 9981,
+      "dauer_s": 7.51,
+      "treffer": 6
+    }
+  },
+  "abbruch": null,
+  "tokens_gesamt": 9981,
+  "vergleich": {
+    "faelle": [
+      {
+        "id": "V1",
+        "soll": "echter Widerspruch",
+        "lauf_1": "echter Widerspruch",
+        "lauf_2": "unklar",
+        "gewechselt": true
+      },
+      {
+        "id": "V2",
+        "soll": "echter Widerspruch",
+        "lauf_1": "echter Widerspruch",
+        "lauf_2": "echter Widerspruch",
+        "gewechselt": false
+      },
+      {
+        "id": "V3",
+        "soll": "echter Widerspruch",
+        "lauf_1": "echter Widerspruch",
+        "lauf_2": "echter Widerspruch",
+        "gewechselt": false
+      },
+      {
+        "id": "V4",
+        "soll": "anderes Bauteil",
+        "lauf_1": "anderes Bauteil",
+        "lauf_2": "anderes Bauteil",
+        "gewechselt": false
+      },
+      {
+        "id": "V5",
+        "soll": "anderes Bauteil",
+        "lauf_1": "anderes Bauteil",
+        "lauf_2": "anderes Bauteil",
+        "gewechselt": false
+      },
+      {
+        "id": "V6",
+        "soll": "Bereichs- oder Mehrfachangabe",
+        "lauf_1": "Bereichs- oder Mehrfachangabe",
+        "lauf_2": "Bereichs- oder Mehrfachangabe",
+        "gewechselt": false
+      },
+      {
+        "id": "V7",
+        "soll": "Bereichs- oder Mehrfachangabe",
+        "lauf_1": "Bereichs- oder Mehrfachangabe",
+        "lauf_2": "Bereichs- oder Mehrfachangabe",
+        "gewechselt": false
+      },
+      {
+        "id": "V8",
+        "soll": "unklar",
+        "lauf_1": "echter Widerspruch",
+        "lauf_2": "echter Widerspruch",
+        "gewechselt": false
+      }
+    ],
+    "gewechselt": [
+      "V1"
+    ]
+  }
+}

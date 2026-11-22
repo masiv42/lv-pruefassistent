@@ -1,0 +1,487 @@
+{
+  "zeit": "2026-11-21T09:03:04+01:00",
+  "quelle": {
+    "ki_ergebnisse": "data/qa/ki_messung_lauf1.json („ergebnisse“, „positionen“; unverändert)",
+    "goldstandard": "data/qa/ki_goldstandard.json (Stand B0b, 05.01.4/05.01.46 entschieden)",
+    "ki_aufrufe": 0,
+    "prompt_version": "P4-v2",
+    "modell": "openai/gpt-oss-120b"
+  },
+  "regel_worst_case_grob": {
+    "positionen_bewertet": 13,
+    "richtig": 9,
+    "falsch": 4,
+    "falsch_liste": [
+      "3.2.60 DN300 | DN500",
+      "3.3.3 C20/25 | C25/30",
+      "5.1.46 DN125 | DN100",
+      "5.3.3 C20/25 | C25/30"
+    ],
+    "gold_unklar_ausgelassen": [
+      "1.1.4 DN100 | DN150",
+      "2.3.23 DN150 | DN300",
+      "5.3.100 DN100 | DN150"
+    ],
+    "echte_widersprueche": 7,
+    "echte_widersprueche_in_jeder_datei_erkannt": 3,
+    "gefaehrliche_richtung": [
+      {
+        "position": "3.2.60 DN300 | DN500",
+        "dateien": [
+          "Leistungsverzeichnis.pdf"
+        ],
+        "ki": [
+          "Bereichs- oder Mehrfachangabe"
+        ]
+      },
+      {
+        "position": "3.3.3 C20/25 | C25/30",
+        "dateien": [
+          "Abgabe LV.pdf",
+          "Leistungsverzeichnis_leer.pdf"
+        ],
+        "ki": [
+          "anderes Bauteil"
+        ]
+      },
+      {
+        "position": "5.1.46 DN125 | DN100",
+        "dateien": [
+          "HEM2301-2_Gesamt-LV.pdf"
+        ],
+        "ki": [
+          "anderes Bauteil"
+        ]
+      },
+      {
+        "position": "5.3.3 C20/25 | C25/30",
+        "dateien": [
+          "Abgabe LV.pdf",
+          "Leistungsverzeichnis_leer.pdf",
+          "StBALV23040.D86"
+        ],
+        "ki": [
+          "anderes Bauteil"
+        ]
+      }
+    ],
+    "uneinheitlich": [
+      "3.3.3 C20/25 | C25/30",
+      "5.1.46 DN125 | DN100",
+      "5.3.3 C20/25 | C25/30"
+    ]
+  },
+  "regel_worst_case_fein": {
+    "positionen_bewertet": 16,
+    "richtig": 9,
+    "falsch": 7,
+    "falsch_liste": [
+      "1.1.4 DN100 | DN150",
+      "2.3.23 DN150 | DN300",
+      "3.2.60 DN300 | DN500",
+      "3.3.3 C20/25 | C25/30",
+      "5.1.46 DN125 | DN100",
+      "5.3.100 DN100 | DN150",
+      "5.3.3 C20/25 | C25/30"
+    ],
+    "gold_unklar_ausgelassen": [],
+    "echte_widersprueche": 7,
+    "echte_widersprueche_in_jeder_datei_erkannt": 3,
+    "gefaehrliche_richtung": [
+      {
+        "position": "3.2.60 DN300 | DN500",
+        "dateien": [
+          "Leistungsverzeichnis.pdf"
+        ],
+        "ki": [
+          "Bereichs- oder Mehrfachangabe"
+        ]
+      },
+      {
+        "position": "3.3.3 C20/25 | C25/30",
+        "dateien": [
+          "Abgabe LV.pdf",
+          "Leistungsverzeichnis_leer.pdf"
+        ],
+        "ki": [
+          "anderes Bauteil"
+        ]
+      },
+      {
+        "position": "5.1.46 DN125 | DN100",
+        "dateien": [
+          "HEM2301-2_Gesamt-LV.pdf"
+        ],
+        "ki": [
+          "anderes Bauteil"
+        ]
+      },
+      {
+        "position": "5.3.3 C20/25 | C25/30",
+        "dateien": [
+          "Abgabe LV.pdf",
+          "Leistungsverzeichnis_leer.pdf",
+          "StBALV23040.D86"
+        ],
+        "ki": [
+          "anderes Bauteil"
+        ]
+      }
+    ],
+    "uneinheitlich": [
+      "3.3.3 C20/25 | C25/30",
+      "5.1.46 DN125 | DN100",
+      "5.3.3 C20/25 | C25/30"
+    ]
+  },
+  "zusatz": [
+    {
+      "fund_id": "1|501-24-01_GAEB-XML_sas.x83|2.5.5",
+      "position": "2.5.5 DN1200 | DN110/DN625",
+      "gold": "anderes Bauteil",
+      "ki": "anderes Bauteil",
+      "urteil": "Treffer",
+      "gruppe": "zusatz"
+    },
+    {
+      "fund_id": "1|501-24-01_GAEB-XML_sas.x83|2.5.7",
+      "position": "2.5.7 DN2500 | DN110/DN300/DN800",
+      "gold": "anderes Bauteil",
+      "ki": "KI-Vorschlag verworfen: Zitat nicht im Original",
+      "urteil": "verworfen",
+      "gruppe": "zusatz"
+    },
+    {
+      "fund_id": "1|501-24-01_GAEB-XML_sas.x83|2.5.9",
+      "position": "2.5.9 DN2500 | DN110/DN300/DN450/DN800",
+      "gold": "anderes Bauteil",
+      "ki": "KI-Vorschlag verworfen: Zitat nicht im Original",
+      "urteil": "verworfen",
+      "gruppe": "zusatz"
+    }
+  ],
+  "strittig": [],
+  "zeilen": [
+    {
+      "fund_id": "1|501-24-01_GAEB-XML_sas.x83|2.3.23",
+      "position": "2.3.23 DN150 | DN300",
+      "gold": "unklar",
+      "ki": "echter Widerspruch",
+      "urteil": "Abweichung",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|501-24-01_GAEB-XML_sas.x83|3.3.19",
+      "position": "3.3.19 DN100 | DN65",
+      "gold": "anderes Bauteil",
+      "ki": "anderes Bauteil",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|8209.003_Leistungsverzeichnis_leer.D83|5.1.4",
+      "position": "5.1.4 DN125 | DN100",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|8209.003_Leistungsverzeichnis_leer.D83|5.1.46",
+      "position": "5.1.46 DN125 | DN100",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|8209.003_Leistungsverzeichnis_leer.X83|5.1.4",
+      "position": "5.1.4 DN125 | DN100",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|8209.003_Leistungsverzeichnis_leer.X83|5.1.46",
+      "position": "5.1.46 DN125 | DN100",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|Abgabe LV.pdf|1.1.4",
+      "position": "1.1.4 DN100 | DN150",
+      "gold": "unklar",
+      "ki": "echter Widerspruch",
+      "urteil": "Abweichung",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "2|Abgabe LV.pdf|3.3.3",
+      "position": "3.3.3 C20/25 | C25/30",
+      "gold": "echter Widerspruch",
+      "ki": "anderes Bauteil",
+      "urteil": "Abweichung",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "2|Abgabe LV.pdf|3.3.4",
+      "position": "3.3.4 C20/25 | C25/30",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "2|Abgabe LV.pdf|5.3.3",
+      "position": "5.3.3 C20/25 | C25/30",
+      "gold": "echter Widerspruch",
+      "ki": "anderes Bauteil",
+      "urteil": "Abweichung",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|Angebot AN24-0305.pdf|2.1.410",
+      "position": "2.1.410 DN50 | DN300",
+      "gold": "Bereichs- oder Mehrfachangabe",
+      "ki": "Bereichs- oder Mehrfachangabe",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|Angebot AN24-0305.pdf|4.1.200",
+      "position": "4.1.200 DN50 | DN300",
+      "gold": "Bereichs- oder Mehrfachangabe",
+      "ki": "Bereichs- oder Mehrfachangabe",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|GAEB-[PROJEKT_004].X83|2.9",
+      "position": "2.9 DN900 | DN800",
+      "gold": "Bereichs- oder Mehrfachangabe",
+      "ki": "Bereichs- oder Mehrfachangabe",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|HEM2301-2_Gesamt-LV.pdf|5.1.4",
+      "position": "5.1.4 DN125 | DN100",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|HEM2301-2_Gesamt-LV.pdf|5.1.46",
+      "position": "5.1.46 DN125 | DN100",
+      "gold": "echter Widerspruch",
+      "ki": "anderes Bauteil",
+      "urteil": "Abweichung",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|LV-Schachtbauwerk.pdf|5.3.100",
+      "position": "5.3.100 DN100 | DN150",
+      "gold": "unklar",
+      "ki": "echter Widerspruch",
+      "urteil": "Abweichung",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|LV_00_Roh_und_Erdauarbeiten.pdf|2.3.90",
+      "position": "2.3.90 DN1000 | DN100",
+      "gold": "Bereichs- oder Mehrfachangabe",
+      "ki": "Bereichs- oder Mehrfachangabe",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "2|LV_00_Roh_und_Erdauarbeiten.pdf|3.1.180",
+      "position": "3.1.180 C30/37 | C25/30",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|LV_14b_Dachentwaesserung.pdf|48",
+      "position": "48 DN100 | DN200",
+      "gold": "anderes Bauteil",
+      "ki": "anderes Bauteil",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|Leistungsverzeichnis.pdf|2.1.410",
+      "position": "2.1.410 DN50 | DN300",
+      "gold": "Bereichs- oder Mehrfachangabe",
+      "ki": "Bereichs- oder Mehrfachangabe",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|Leistungsverzeichnis.pdf|3.2.60",
+      "position": "3.2.60 DN300 | DN500",
+      "gold": "echter Widerspruch",
+      "ki": "Bereichs- oder Mehrfachangabe",
+      "urteil": "Abweichung",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|Leistungsverzeichnis.pdf|4.1.200",
+      "position": "4.1.200 DN50 | DN300",
+      "gold": "Bereichs- oder Mehrfachangabe",
+      "ki": "Bereichs- oder Mehrfachangabe",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|Leistungsverzeichnis.pdf|5.3.100",
+      "position": "5.3.100 DN100 | DN150",
+      "gold": "unklar",
+      "ki": "echter Widerspruch",
+      "urteil": "Abweichung",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|Leistungsverzeichnis_leer.pdf|1.1.4",
+      "position": "1.1.4 DN100 | DN150",
+      "gold": "unklar",
+      "ki": "echter Widerspruch",
+      "urteil": "Abweichung",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "2|Leistungsverzeichnis_leer.pdf|3.3.3",
+      "position": "3.3.3 C20/25 | C25/30",
+      "gold": "echter Widerspruch",
+      "ki": "anderes Bauteil",
+      "urteil": "Abweichung",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "2|Leistungsverzeichnis_leer.pdf|3.3.4",
+      "position": "3.3.4 C20/25 | C25/30",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "2|Leistungsverzeichnis_leer.pdf|5.3.3",
+      "position": "5.3.3 C20/25 | C25/30",
+      "gold": "echter Widerspruch",
+      "ki": "anderes Bauteil",
+      "urteil": "Abweichung",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|StBALV23040.D86|1.1.4",
+      "position": "1.1.4 DN100 | DN150",
+      "gold": "unklar",
+      "ki": "echter Widerspruch",
+      "urteil": "Abweichung",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "2|StBALV23040.D86|3.3.3",
+      "position": "3.3.3 C20/25 | C25/30",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "2|StBALV23040.D86|3.3.4",
+      "position": "3.3.4 C20/25 | C25/30",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "2|StBALV23040.D86|5.3.3",
+      "position": "5.3.3 C20/25 | C25/30",
+      "gold": "echter Widerspruch",
+      "ki": "anderes Bauteil",
+      "urteil": "Abweichung",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|[NUMMER_001]_leer.X83|1.1.4",
+      "position": "1.1.4 DN100 | DN150",
+      "gold": "unklar",
+      "ki": "echter Widerspruch",
+      "urteil": "Abweichung",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "2|[NUMMER_001]_leer.X83|3.3.3",
+      "position": "3.3.3 C20/25 | C25/30",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "2|[NUMMER_001]_leer.X83|3.3.4",
+      "position": "3.3.4 C20/25 | C25/30",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "2|[NUMMER_001]_leer.X83|5.3.3",
+      "position": "5.3.3 C20/25 | C25/30",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|[ORT_024] LV24069.D86|5.1.4",
+      "position": "5.1.4 DN125 | DN100",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|[ORT_024] LV24069.D86|5.1.46",
+      "position": "5.1.46 DN125 | DN100",
+      "gold": "echter Widerspruch",
+      "ki": "echter Widerspruch",
+      "urteil": "Treffer",
+      "gruppe": "regel"
+    },
+    {
+      "fund_id": "1|501-24-01_GAEB-XML_sas.x83|2.5.5",
+      "position": "2.5.5 DN1200 | DN110/DN625",
+      "gold": "anderes Bauteil",
+      "ki": "anderes Bauteil",
+      "urteil": "Treffer",
+      "gruppe": "zusatz"
+    },
+    {
+      "fund_id": "1|501-24-01_GAEB-XML_sas.x83|2.5.7",
+      "position": "2.5.7 DN2500 | DN110/DN300/DN800",
+      "gold": "anderes Bauteil",
+      "ki": "KI-Vorschlag verworfen: Zitat nicht im Original",
+      "urteil": "verworfen",
+      "gruppe": "zusatz"
+    },
+    {
+      "fund_id": "1|501-24-01_GAEB-XML_sas.x83|2.5.9",
+      "position": "2.5.9 DN2500 | DN110/DN300/DN450/DN800",
+      "gold": "anderes Bauteil",
+      "ki": "KI-Vorschlag verworfen: Zitat nicht im Original",
+      "urteil": "verworfen",
+      "gruppe": "zusatz"
+    }
+  ],
+  "hinweis": "grob: echt / Fehlalarm (anderes Bauteil, Bereichs- oder Mehrfachangabe); Positionen mit Gold „unklar“ werden in grob ausgelassen und in fein gezählt. Gefährliche Richtung: Gold „echter Widerspruch“, KI in mindestens einer Datei „anderes Bauteil“ oder „Bereichs- oder Mehrfachangabe“. Zusatzfälle (vom DN-Filter aussortiert) und strittige Einträge getrennt, nicht in der Quote."
+}

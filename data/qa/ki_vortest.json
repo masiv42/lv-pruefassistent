@@ -1,0 +1,29 @@
+{
+  "zweck": "Vortest der KI-Gegenprüfung mit erfundenen Positionen (nicht aus dem Datensatz, keine Nachbauten der 14 Etiketten-Zeilen). Soll-Einordnungen vom Team vorgegeben bzw. nach der Fallbeschreibung des Teams entworfen (Team, Chat 21.11.2026).",
+  "faelle": [
+    {"id": "V1", "pruefung": 1, "soll": "echter Widerspruch", "art": "Kurztest-Fall (Team: echter Widerspruch)",
+     "kurztext": "Gussrohr DN 150 liefern und verlegen",
+     "langtext": "Gussrohr DN 150 liefern und verlegen Duktiles Gussrohr DN 200 mit Steckmuffe, Zementmörtelauskleidung, liefern und in vorbereiteten Rohrgraben verlegen."},
+    {"id": "V2", "pruefung": 1, "soll": "echter Widerspruch", "art": "Zubehörangabe ohne eigenen Wert (inkl. Dichtung)",
+     "kurztext": "KG-Rohr DN 125 inkl. Dichtung",
+     "langtext": "KG-Rohr DN 125 inkl. Dichtung Kanalgrundrohr aus PVC-U, SN 8, DN 160, inkl. Lippendichtung, in Baulängen bis 5 m liefern und im Rohrgraben verlegen."},
+    {"id": "V3", "pruefung": 1, "soll": "echter Widerspruch", "art": "gleiches Bauteil, andere Nennweite",
+     "kurztext": "Gewinderohr Stahl verzinkt DN 80",
+     "langtext": "Gewinderohr Stahl verzinkt DN 80 Gewinderohr aus Stahl, feuerverzinkt, mittelschwer, Nennweite DN 65, liefern und an der Wand montieren."},
+    {"id": "V4", "pruefung": 1, "soll": "anderes Bauteil", "art": "zweiter Wert ausdrücklich einem anderen, benannten Bauteil zugeordnet",
+     "kurztext": "Absperrklappe DN 300 mit Handgetriebe",
+     "langtext": "Absperrklappe DN 300 mit Handgetriebe Absperrklappe aus Grauguss mit Handgetriebe, beidseitig Flanschanschluss; Übergangsstück auf die vorhandene Bestandsleitung DN 250 mitliefern."},
+    {"id": "V5", "pruefung": 1, "soll": "anderes Bauteil", "art": "zweiter Wert ausdrücklich einem anderen, benannten Bauteil zugeordnet",
+     "kurztext": "Heizkreisverteiler Edelstahl, Hauptanschluss DN 32",
+     "langtext": "Heizkreisverteiler Edelstahl, Hauptanschluss DN 32 Verteiler für sechs Heizkreise mit Durchflussmessern; Heizkreisabgänge je DN 20 mit Kugelhahn, inkl. Wandkonsole."},
+    {"id": "V6", "pruefung": 1, "soll": "Bereichs- oder Mehrfachangabe", "art": "Mehrfachangabe mit „/“",
+     "kurztext": "Kabelschutzrohr flexibel DN 110",
+     "langtext": "Kabelschutzrohr flexibel DN 110 Kabelschutzrohr aus PE-HD, gewellt, Nennweite wahlweise DN 90/110 nach Wahl des Auftragnehmers, inkl. Zugdraht."},
+    {"id": "V7", "pruefung": 2, "soll": "Bereichs- oder Mehrfachangabe", "art": "Bereichsangabe mit „bis“",
+     "kurztext": "Unterbeton C20/25, d = 10 cm",
+     "langtext": "Unterbeton C20/25, d = 10 cm Unterbeton aus Normalbeton der Festigkeitsklassen C16/20 bis C25/30 nach Wahl des Auftragnehmers, eben abziehen."},
+    {"id": "V8", "pruefung": 1, "soll": "unklar", "art": "Bezug des zweiten Werts nicht erkennbar",
+     "kurztext": "Leitungsabschnitt DN 80 herstellen",
+     "langtext": "Leitungsabschnitt DN 80 herstellen Leitungsabschnitt gemäß Bestandsplan herstellen; im Plan ist DN 100 eingetragen, der Bestand ist nicht geprüft."}
+  ]
+}

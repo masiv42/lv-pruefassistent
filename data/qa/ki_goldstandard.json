@@ -1,0 +1,450 @@
+{
+  "stand": "2026-11-21",
+  "erstellt_vor_ki_lauf": true,
+  "regel": "Zählt nur, wenn die Einordnung vor dem ersten KI-Lauf entstanden und am Original geprüft ist (Team, Chat 21.11.2026, B9). Abbildung: „echter Fall“ des Prüfkatalogs = „echter Widerspruch“. Bestätigte Fehlalarme (Team, 21.11.2026) stehen mit regel_fund=false im Goldstandard. Einordnungen aus data/qa/etiketten_person_b.xlsx kommen mit Quelle „Person B, am Original, vor dem KI-Lauf“ hinzu.",
+  "einordnungen": [
+    "echter Widerspruch",
+    "anderes Bauteil",
+    "Bereichs- oder Mehrfachangabe",
+    "unklar"
+  ],
+  "eintraege": [
+    {
+      "fund_id": "1|501-24-01_GAEB-XML_sas.x83|2.3.23",
+      "einordnung": "unklar",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|501-24-01_GAEB-XML_sas.x83|3.3.19",
+      "einordnung": "anderes Bauteil",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|8209.003_Leistungsverzeichnis_leer.D83|5.1.4",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Teamentscheidung 21.11.2026 (an den Berater delegiert), B0b: Kurztext „Edelstahl-Rohr DN 125“, Langtext „Edelstahlrohr DN 100 … 139,7 x 2,6 mm“, am Original in X83, D83, D86 und HEM2301-2_Gesamt-LV.pdf (S. 96) bestätigt; im selben LV ordnet HEM2301-2 139,7 mm der DN 125 zu (05.01.10, 05.01.16) und 114,3 mm der DN 100 (05.01.3, 05.01.15). Keine externe Norm als Quelle.",
+      "regel_fund": true,
+      "strittig": false,
+      "einordnungen": [
+        {
+          "einordnung": "echter Widerspruch",
+          "quelle": "input/pruefkatalog.md (Nr. 1/2: „von Hand vorgeprüfte echte Fälle“) und docs/acceptance.md T2 (Positiv-Test); Wortlaut am Original geprüft: docs/pruefprotokoll.md, S2 [Team, 20.11.2026]"
+        },
+        {
+          "einordnung": "unklar",
+          "quelle": "Person B, am Original, vor dem KI-Lauf"
+        }
+      ],
+      "vorher": {
+        "einordnung": "strittig",
+        "zaehlt": false,
+        "quelle": "strittig: Einordnungen siehe „einordnungen“"
+      },
+      "entschieden": true
+    },
+    {
+      "fund_id": "1|8209.003_Leistungsverzeichnis_leer.D83|5.1.46",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Teamentscheidung 21.11.2026 (an den Berater delegiert), B0b: Kurztext „Losflansch DN 125“, Langtext „Losflansch, DN 100 … sonst wie vor“, wortgleich mit 05.01.45 (DN 100/DN 100); 05.01.47 stimmig (DN 150/DN 150) → Kopierfehler, dasselbe Bauteil. Langtexte 05.01.45–47 vom Skeptiker am Original bestätigt (X83, D83, D86, HEM2301-2_Gesamt-LV.pdf S. 104/105).",
+      "regel_fund": true,
+      "strittig": false,
+      "einordnungen": [
+        {
+          "einordnung": "echter Widerspruch",
+          "quelle": "input/pruefkatalog.md (Nr. 1/2: „von Hand vorgeprüfte echte Fälle“) und docs/acceptance.md T2 (Positiv-Test); Wortlaut am Original geprüft: docs/pruefprotokoll.md, S2 [Team, 20.11.2026]"
+        },
+        {
+          "einordnung": "unklar",
+          "quelle": "Person B, am Original, vor dem KI-Lauf"
+        }
+      ],
+      "vorher": {
+        "einordnung": "strittig",
+        "zaehlt": false,
+        "quelle": "strittig: Einordnungen siehe „einordnungen“"
+      },
+      "entschieden": true
+    },
+    {
+      "fund_id": "1|8209.003_Leistungsverzeichnis_leer.X83|5.1.4",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Teamentscheidung 21.11.2026 (an den Berater delegiert), B0b: Kurztext „Edelstahl-Rohr DN 125“, Langtext „Edelstahlrohr DN 100 … 139,7 x 2,6 mm“, am Original in X83, D83, D86 und HEM2301-2_Gesamt-LV.pdf (S. 96) bestätigt; im selben LV ordnet HEM2301-2 139,7 mm der DN 125 zu (05.01.10, 05.01.16) und 114,3 mm der DN 100 (05.01.3, 05.01.15). Keine externe Norm als Quelle.",
+      "regel_fund": true,
+      "strittig": false,
+      "einordnung_person_b": "unklar",
+      "quelle_person_b": "Person B, am Original, vor dem KI-Lauf",
+      "einordnungen": [
+        {
+          "einordnung": "echter Widerspruch",
+          "quelle": "input/pruefkatalog.md (Nr. 1/2: „von Hand vorgeprüfte echte Fälle“) und docs/acceptance.md T2 (Positiv-Test); Wortlaut am Original geprüft: docs/pruefprotokoll.md, S2 [Team, 20.11.2026]"
+        },
+        {
+          "einordnung": "unklar",
+          "quelle": "Person B, am Original, vor dem KI-Lauf"
+        }
+      ],
+      "vorher": {
+        "einordnung": "echter Widerspruch",
+        "zaehlt": true,
+        "quelle": "input/pruefkatalog.md (Nr. 1/2: „von Hand vorgeprüfte echte Fälle“) und docs/acceptance.md T2 (Positiv-Test); Wortlaut am Original geprüft: docs/pruefprotokoll.md, S2 [Team, 20.11.2026]"
+      },
+      "entschieden": true
+    },
+    {
+      "fund_id": "1|8209.003_Leistungsverzeichnis_leer.X83|5.1.46",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Teamentscheidung 21.11.2026 (an den Berater delegiert), B0b: Kurztext „Losflansch DN 125“, Langtext „Losflansch, DN 100 … sonst wie vor“, wortgleich mit 05.01.45 (DN 100/DN 100); 05.01.47 stimmig (DN 150/DN 150) → Kopierfehler, dasselbe Bauteil. Langtexte 05.01.45–47 vom Skeptiker am Original bestätigt (X83, D83, D86, HEM2301-2_Gesamt-LV.pdf S. 104/105).",
+      "regel_fund": true,
+      "strittig": false,
+      "einordnung_person_b": "unklar",
+      "quelle_person_b": "Person B, am Original, vor dem KI-Lauf",
+      "einordnungen": [
+        {
+          "einordnung": "echter Widerspruch",
+          "quelle": "input/pruefkatalog.md (Nr. 1/2: „von Hand vorgeprüfte echte Fälle“) und docs/acceptance.md T2 (Positiv-Test); Wortlaut am Original geprüft: docs/pruefprotokoll.md, S2 [Team, 20.11.2026]"
+        },
+        {
+          "einordnung": "unklar",
+          "quelle": "Person B, am Original, vor dem KI-Lauf"
+        }
+      ],
+      "vorher": {
+        "einordnung": "echter Widerspruch",
+        "zaehlt": true,
+        "quelle": "input/pruefkatalog.md (Nr. 1/2: „von Hand vorgeprüfte echte Fälle“) und docs/acceptance.md T2 (Positiv-Test); Wortlaut am Original geprüft: docs/pruefprotokoll.md, S2 [Team, 20.11.2026]"
+      },
+      "entschieden": true
+    },
+    {
+      "fund_id": "1|Abgabe LV.pdf|1.1.4",
+      "einordnung": "unklar",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "2|Abgabe LV.pdf|3.3.3",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "2|Abgabe LV.pdf|3.3.4",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "2|Abgabe LV.pdf|5.3.3",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|Angebot AN24-0305.pdf|2.1.410",
+      "einordnung": "Bereichs- oder Mehrfachangabe",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|Angebot AN24-0305.pdf|4.1.200",
+      "einordnung": "Bereichs- oder Mehrfachangabe",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|GAEB-[PROJEKT_004].X83|2.9",
+      "einordnung": "Bereichs- oder Mehrfachangabe",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|HEM2301-2_Gesamt-LV.pdf|5.1.4",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Teamentscheidung 21.11.2026 (an den Berater delegiert), B0b: Kurztext „Edelstahl-Rohr DN 125“, Langtext „Edelstahlrohr DN 100 … 139,7 x 2,6 mm“, am Original in X83, D83, D86 und HEM2301-2_Gesamt-LV.pdf (S. 96) bestätigt; im selben LV ordnet HEM2301-2 139,7 mm der DN 125 zu (05.01.10, 05.01.16) und 114,3 mm der DN 100 (05.01.3, 05.01.15). Keine externe Norm als Quelle.",
+      "regel_fund": true,
+      "strittig": false,
+      "einordnungen": [
+        {
+          "einordnung": "echter Widerspruch",
+          "quelle": "input/pruefkatalog.md (Nr. 1/2: „von Hand vorgeprüfte echte Fälle“) und docs/acceptance.md T2 (Positiv-Test); Wortlaut am Original geprüft: docs/pruefprotokoll.md, S2 [Team, 20.11.2026]"
+        },
+        {
+          "einordnung": "unklar",
+          "quelle": "Person B, am Original, vor dem KI-Lauf"
+        }
+      ],
+      "vorher": {
+        "einordnung": "strittig",
+        "zaehlt": false,
+        "quelle": "strittig: Einordnungen siehe „einordnungen“"
+      },
+      "entschieden": true
+    },
+    {
+      "fund_id": "1|HEM2301-2_Gesamt-LV.pdf|5.1.46",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Teamentscheidung 21.11.2026 (an den Berater delegiert), B0b: Kurztext „Losflansch DN 125“, Langtext „Losflansch, DN 100 … sonst wie vor“, wortgleich mit 05.01.45 (DN 100/DN 100); 05.01.47 stimmig (DN 150/DN 150) → Kopierfehler, dasselbe Bauteil. Langtexte 05.01.45–47 vom Skeptiker am Original bestätigt (X83, D83, D86, HEM2301-2_Gesamt-LV.pdf S. 104/105).",
+      "regel_fund": true,
+      "strittig": false,
+      "einordnungen": [
+        {
+          "einordnung": "echter Widerspruch",
+          "quelle": "input/pruefkatalog.md (Nr. 1/2: „von Hand vorgeprüfte echte Fälle“) und docs/acceptance.md T2 (Positiv-Test); Wortlaut am Original geprüft: docs/pruefprotokoll.md, S2 [Team, 20.11.2026]"
+        },
+        {
+          "einordnung": "unklar",
+          "quelle": "Person B, am Original, vor dem KI-Lauf"
+        }
+      ],
+      "vorher": {
+        "einordnung": "strittig",
+        "zaehlt": false,
+        "quelle": "strittig: Einordnungen siehe „einordnungen“"
+      },
+      "entschieden": true
+    },
+    {
+      "fund_id": "1|LV-Schachtbauwerk.pdf|5.3.100",
+      "einordnung": "unklar",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|LV_00_Roh_und_Erdauarbeiten.pdf|2.3.90",
+      "einordnung": "Bereichs- oder Mehrfachangabe",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "2|LV_00_Roh_und_Erdauarbeiten.pdf|3.1.180",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "input/pruefkatalog.md (Nr. 1/2: „von Hand vorgeprüfte echte Fälle“) und docs/acceptance.md T2 (Positiv-Test); Wortlaut am Original geprüft: docs/pruefprotokoll.md, S2 [Team, 20.11.2026]",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|LV_14b_Dachentwaesserung.pdf|48",
+      "einordnung": "anderes Bauteil",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|Leistungsverzeichnis.pdf|2.1.410",
+      "einordnung": "Bereichs- oder Mehrfachangabe",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|Leistungsverzeichnis.pdf|3.2.60",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "input/pruefkatalog.md (Nr. 1/2: „von Hand vorgeprüfte echte Fälle“) und docs/acceptance.md T2 (Positiv-Test); Wortlaut am Original geprüft: docs/pruefprotokoll.md, S2 [Team, 20.11.2026]",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|Leistungsverzeichnis.pdf|4.1.200",
+      "einordnung": "Bereichs- oder Mehrfachangabe",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|Leistungsverzeichnis.pdf|5.3.100",
+      "einordnung": "unklar",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|Leistungsverzeichnis_leer.pdf|1.1.4",
+      "einordnung": "unklar",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "2|Leistungsverzeichnis_leer.pdf|3.3.3",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "2|Leistungsverzeichnis_leer.pdf|3.3.4",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "2|Leistungsverzeichnis_leer.pdf|5.3.3",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|StBALV23040.D86|1.1.4",
+      "einordnung": "unklar",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "2|StBALV23040.D86|3.3.3",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "2|StBALV23040.D86|3.3.4",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "2|StBALV23040.D86|5.3.3",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|[NUMMER_001]_leer.X83|1.1.4",
+      "einordnung": "unklar",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "2|[NUMMER_001]_leer.X83|3.3.3",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "input/pruefkatalog.md (Nr. 1/2: „von Hand vorgeprüfte echte Fälle“) und docs/acceptance.md T2 (Positiv-Test); Wortlaut am Original geprüft: docs/pruefprotokoll.md, S2 [Team, 20.11.2026]",
+      "regel_fund": true,
+      "bestaetigt_durch": "Person B, am Original, vor dem KI-Lauf"
+    },
+    {
+      "fund_id": "2|[NUMMER_001]_leer.X83|3.3.4",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "2|[NUMMER_001]_leer.X83|5.3.3",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Person B, am Original, vor dem KI-Lauf",
+      "regel_fund": true
+    },
+    {
+      "fund_id": "1|[ORT_024] LV24069.D86|5.1.4",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Teamentscheidung 21.11.2026 (an den Berater delegiert), B0b: Kurztext „Edelstahl-Rohr DN 125“, Langtext „Edelstahlrohr DN 100 … 139,7 x 2,6 mm“, am Original in X83, D83, D86 und HEM2301-2_Gesamt-LV.pdf (S. 96) bestätigt; im selben LV ordnet HEM2301-2 139,7 mm der DN 125 zu (05.01.10, 05.01.16) und 114,3 mm der DN 100 (05.01.3, 05.01.15). Keine externe Norm als Quelle.",
+      "regel_fund": true,
+      "strittig": false,
+      "einordnungen": [
+        {
+          "einordnung": "echter Widerspruch",
+          "quelle": "input/pruefkatalog.md (Nr. 1/2: „von Hand vorgeprüfte echte Fälle“) und docs/acceptance.md T2 (Positiv-Test); Wortlaut am Original geprüft: docs/pruefprotokoll.md, S2 [Team, 20.11.2026]"
+        },
+        {
+          "einordnung": "unklar",
+          "quelle": "Person B, am Original, vor dem KI-Lauf"
+        }
+      ],
+      "vorher": {
+        "einordnung": "strittig",
+        "zaehlt": false,
+        "quelle": "strittig: Einordnungen siehe „einordnungen“"
+      },
+      "entschieden": true
+    },
+    {
+      "fund_id": "1|[ORT_024] LV24069.D86|5.1.46",
+      "einordnung": "echter Widerspruch",
+      "zaehlt": true,
+      "quelle": "Teamentscheidung 21.11.2026 (an den Berater delegiert), B0b: Kurztext „Losflansch DN 125“, Langtext „Losflansch, DN 100 … sonst wie vor“, wortgleich mit 05.01.45 (DN 100/DN 100); 05.01.47 stimmig (DN 150/DN 150) → Kopierfehler, dasselbe Bauteil. Langtexte 05.01.45–47 vom Skeptiker am Original bestätigt (X83, D83, D86, HEM2301-2_Gesamt-LV.pdf S. 104/105).",
+      "regel_fund": true,
+      "strittig": false,
+      "einordnungen": [
+        {
+          "einordnung": "echter Widerspruch",
+          "quelle": "input/pruefkatalog.md (Nr. 1/2: „von Hand vorgeprüfte echte Fälle“) und docs/acceptance.md T2 (Positiv-Test); Wortlaut am Original geprüft: docs/pruefprotokoll.md, S2 [Team, 20.11.2026]"
+        },
+        {
+          "einordnung": "unklar",
+          "quelle": "Person B, am Original, vor dem KI-Lauf"
+        }
+      ],
+      "vorher": {
+        "einordnung": "strittig",
+        "zaehlt": false,
+        "quelle": "strittig: Einordnungen siehe „einordnungen“"
+      },
+      "entschieden": true
+    },
+    {
+      "fund_id": "1|501-24-01_GAEB-XML_sas.x83|2.5.5",
+      "oz": "02.05.0005",
+      "einordnung": "anderes Bauteil",
+      "zaehlt": true,
+      "regel_fund": false,
+      "quelle": "docs/pruefprotokoll.md, Abschnitt S1 (Wortlaut am Original, 20.11.2026): alle Langtext-DN-Werte stehen bei eigenen Bauteilen (Rückstauverschluss, Öffnung der Abdeckplatte, Auflagerring, Schachtdurchführung, Betonkragen); docs/acceptance.md T2, Negativ-Tests [BESTÄTIGT, Team]",
+      "hinweis": "Kein Regel-Fund: der DN-Filter (Langtext nennt genau einen DN-Wert) entfernt diese Position; die KI sieht sie im Lauf über die Regel-Funde nicht."
+    },
+    {
+      "fund_id": "1|501-24-01_GAEB-XML_sas.x83|2.5.7",
+      "oz": "02.05.0007",
+      "einordnung": "anderes Bauteil",
+      "zaehlt": true,
+      "regel_fund": false,
+      "quelle": "docs/pruefprotokoll.md, Abschnitt S1 (Wortlaut am Original, 20.11.2026): alle Langtext-DN-Werte stehen bei eigenen Bauteilen (Rückstauverschluss, Öffnung der Abdeckplatte, Auflagerring, Schachtdurchführung, Betonkragen); docs/acceptance.md T2, Negativ-Tests [BESTÄTIGT, Team]",
+      "hinweis": "Kein Regel-Fund: der DN-Filter (Langtext nennt genau einen DN-Wert) entfernt diese Position; die KI sieht sie im Lauf über die Regel-Funde nicht."
+    },
+    {
+      "fund_id": "1|501-24-01_GAEB-XML_sas.x83|2.5.9",
+      "oz": "02.05.0009",
+      "einordnung": "anderes Bauteil",
+      "zaehlt": true,
+      "regel_fund": false,
+      "quelle": "docs/pruefprotokoll.md, Abschnitt S1 (Wortlaut am Original, 20.11.2026): alle Langtext-DN-Werte stehen bei eigenen Bauteilen (Rückstauverschluss, Öffnung der Abdeckplatte, Auflagerring, Schachtdurchführung, Betonkragen); docs/acceptance.md T2, Negativ-Tests [BESTÄTIGT, Team]",
+      "hinweis": "Kein Regel-Fund: der DN-Filter (Langtext nennt genau einen DN-Wert) entfernt diese Position; die KI sieht sie im Lauf über die Regel-Funde nicht."
+    }
+  ],
+  "etiketten": {
+    "datei": "etiketten_person_b_export.xlsx",
+    "eingelesen": "2026-11-21T06:14:15+01:00",
+    "gespeichert": "2026-11-21T06:13:41+01:00",
+    "gefuellt": 14,
+    "gesamt": 14,
+    "quelle": "Person B, am Original, vor dem KI-Lauf",
+    "herkunft": "Numbers-Datei data/qa/Leistungsverzeichnis Etiketten.numbers (Person B, gesichert 21.11.2026 05:59:48, sha256 11443d46…16f8), per AppleScript als Kopie exportiert 06:13:41; Blatt Etiketten mit Vorlage etiketten_person_b.xlsx verglichen: Kopf und 14 Zeilen gleich, nur Spalte Einordnung ausgefüllt"
+  },
+  "entscheidung_strittig": "21.11.2026, B0b: 05.01.4 und 05.01.46 (8 Einträge) vom Team als „echter Widerspruch“ entschieden; Einordnung von Person B („unklar“) bleibt in „einordnungen“ als Herkunft erhalten, der vorherige Stand in „vorher“."
+}

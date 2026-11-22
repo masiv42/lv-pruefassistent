@@ -1,0 +1,594 @@
+{
+  "stand": "2026-11-21T23:12:12+01:00",
+  "prompt_versionen": {
+    "tippfehler": "B5-T1",
+    "widerspruch": "B5-W1"
+  },
+  "modell": "openai/gpt-oss-120b",
+  "anbieter": "groq",
+  "zusammenfassung": {
+    "tippfehler positiv": {
+      "faelle": 8,
+      "gueltig": 8,
+      "richtig": 8
+    },
+    "tippfehler negativ": {
+      "faelle": 8,
+      "gueltig": 6,
+      "richtig": 6
+    },
+    "widerspruch positiv": {
+      "faelle": 8,
+      "gueltig": 6,
+      "richtig": 5
+    },
+    "widerspruch negativ": {
+      "faelle": 8,
+      "gueltig": 8,
+      "richtig": 8
+    }
+  },
+  "faelle": [
+    {
+      "id": "T+01",
+      "pruefung": "tippfehler",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "Tippfehler",
+      "antwort": {
+        "befund": "Tippfehler",
+        "zitat": "Bewehrrung",
+        "korrektur": "Bewehrung",
+        "begruendung": "Das Wort \"Bewehrrung\" ist erkennbar falsch geschrieben, da das korrekte Fachwort \"Bewehrung\" lautet."
+      }
+    },
+    {
+      "id": "T+02",
+      "pruefung": "tippfehler",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "Tippfehler",
+      "antwort": {
+        "befund": "Tippfehler",
+        "zitat": "Abdichtug",
+        "korrektur": "Abdichtung",
+        "begruendung": "Das Wort \"Abdichtug\" fehlt ein \"e\" und ist damit falsch geschrieben."
+      }
+    },
+    {
+      "id": "T+03",
+      "pruefung": "tippfehler",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "Tippfehler",
+      "antwort": {
+        "befund": "Tippfehler",
+        "zitat": "verlgen",
+        "korrektur": "verlegen",
+        "begruendung": "Das Wort \"verlgen\" ist erkennbar falsch geschrieben, es fehlt ein \"e\" nach dem \"l\"."
+      }
+    },
+    {
+      "id": "T+04",
+      "pruefung": "tippfehler",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "Tippfehler",
+      "antwort": {
+        "befund": "Tippfehler",
+        "zitat": "Einzelfundamnet",
+        "korrektur": "Einzelfundament",
+        "begruendung": "Das Wort \"Einzelfundamnet\" ist falsch geschrieben, da die Buchstaben \"m\" und \"e\" vertauscht sind."
+      }
+    },
+    {
+      "id": "T+05",
+      "pruefung": "tippfehler",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "Tippfehler",
+      "antwort": {
+        "befund": "Tippfehler",
+        "zitat": "Mauerwrek",
+        "korrektur": "Mauerwerk",
+        "begruendung": "Das Wort \"Mauerwrek\" weicht von dem korrekten Fachbegriff \"Mauerwerk\" ab, da ein Buchstabe fehlt bzw. vertauscht ist."
+      }
+    },
+    {
+      "id": "T+06",
+      "pruefung": "tippfehler",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "Tippfehler",
+      "antwort": {
+        "befund": "Tippfehler",
+        "zitat": "Estirch",
+        "korrektur": "Estrich",
+        "begruendung": "Das Wort \"Estirch\" weicht von dem fachlichen Begriff \"Estrich\" ab und ist eindeutig falsch geschrieben."
+      }
+    },
+    {
+      "id": "T+07",
+      "pruefung": "tippfehler",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "Tippfehler",
+      "antwort": {
+        "befund": "Tippfehler",
+        "zitat": "Schachtabdekcung",
+        "korrektur": "Schachtabdeckung",
+        "begruendung": "Das Wort enthält den falschen Buchstaben \"c\" anstelle von \"d\" und entspricht nicht der korrekten Schreibweise \"Schachtabdeckung\"."
+      }
+    },
+    {
+      "id": "T+08",
+      "pruefung": "tippfehler",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "Tippfehler",
+      "antwort": {
+        "befund": "Tippfehler",
+        "zitat": "Pflastersteinne",
+        "korrektur": "Pflastersteine",
+        "begruendung": "Das Wort \"Pflastersteinne\" ist nicht korrekt; korrekt ist die Pluralform \"Pflastersteine\"."
+      }
+    },
+    {
+      "id": "T-01",
+      "pruefung": "tippfehler",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag verworfen: Zitat nicht im Original",
+      "quelle": "API",
+      "gueltig": false,
+      "richtig": false,
+      "grund": "Zitat nicht wörtlich",
+      "antwort": {
+        "befund": "Tippfehler",
+        "zitat": "psch",
+        "korrektur": "Stück",
+        "begruendung": "Das Wort \"psch\" ist kein gängiger Fachbegriff und weist fehlende bzw. vertauschte Buchstaben auf, vermutlich sollte es \"Stück\" heißen."
+      }
+    },
+    {
+      "id": "T-02",
+      "pruefung": "tippfehler",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag verworfen: Zitat nicht im Original",
+      "quelle": "API",
+      "gueltig": false,
+      "richtig": false,
+      "grund": "Zitat nicht wörtlich",
+      "antwort": {
+        "befund": "Tippfehler",
+        "zitat": "psch",
+        "korrektur": "Stück",
+        "begruendung": "Das Wort \"psch\" ist kein gängiger Fachbegriff und weist fehlende bzw. vertauschte Buchstaben auf, sodass es als Tippfehler zu werten ist."
+      }
+    },
+    {
+      "id": "T-03",
+      "pruefung": "tippfehler",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "kein Tippfehler",
+      "antwort": {
+        "befund": "kein Tippfehler",
+        "zitat": "",
+        "korrektur": "",
+        "begruendung": "Alle Wörter sind korrekt geschrieben, Platzhalter wie TE.L0.0009 und TEL00009 sind zulässig."
+      }
+    },
+    {
+      "id": "T-04",
+      "pruefung": "tippfehler",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "kein Tippfehler",
+      "antwort": {
+        "befund": "kein Tippfehler",
+        "zitat": "",
+        "korrektur": "",
+        "begruendung": "Alle Wörter entsprechen der korrekten Rechtschreibung und es sind keine erkennbaren Tippfehler vorhanden."
+      }
+    },
+    {
+      "id": "T-05",
+      "pruefung": "tippfehler",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "kein Tippfehler",
+      "antwort": {
+        "befund": "kein Tippfehler",
+        "zitat": "",
+        "korrektur": "",
+        "begruendung": "Alle Wörter entsprechen gängigen Fachbezeichnungen und enthalten keine erkennbaren Rechtschreibfehler."
+      }
+    },
+    {
+      "id": "T-06",
+      "pruefung": "tippfehler",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "kein Tippfehler",
+      "antwort": {
+        "befund": "kein Tippfehler",
+        "zitat": "",
+        "korrektur": "",
+        "begruendung": "Die Schreibweise \"Fuss\" ist zulässig, da ss und ß als gleichwertige Schreibvarianten gelten."
+      }
+    },
+    {
+      "id": "T-07",
+      "pruefung": "tippfehler",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "kein Tippfehler",
+      "antwort": {
+        "befund": "kein Tippfehler",
+        "zitat": "",
+        "korrektur": "",
+        "begruendung": "Alle Wörter entsprechen gängigen Fachbegriffen und Abkürzungen, es ist kein erkennbarer Rechtschreibfehler vorhanden."
+      }
+    },
+    {
+      "id": "T-08",
+      "pruefung": "tippfehler",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "kein Tippfehler",
+      "antwort": {
+        "befund": "kein Tippfehler",
+        "zitat": "",
+        "korrektur": "",
+        "begruendung": "Alle Wörter entsprechen gängigen Fachbegriffen und Rechtschreibung, es sind keine erkennbaren Schreibfehler vorhanden."
+      }
+    },
+    {
+      "id": "W+01",
+      "pruefung": "widerspruch",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "echter Widerspruch",
+      "antwort": {
+        "einordnung": "echter Widerspruch",
+        "oz_a": "0.1",
+        "oz_b": "1.2",
+        "zitat_a": "Material: alle Rohre in PE-HD SDR 11.",
+        "zitat_b": "PVC-U-Rohr DN 150 im Rohrgraben verlegen.",
+        "begruendung": "In OZ 0.1 wird als Material für alle Rohre PE‑HD angegeben, während OZ 1.2 ein PVC‑U‑Rohr verlangt. Die Angaben widersprechen sich eindeutig.",
+        "rueckfrage": "Bitte klären Sie, welches Rohrmaterial für die Ausführung verwendet werden soll."
+      }
+    },
+    {
+      "id": "W+02",
+      "pruefung": "widerspruch",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "echter Widerspruch",
+      "antwort": {
+        "einordnung": "echter Widerspruch",
+        "oz_a": "0.2",
+        "oz_b": "2.1",
+        "zitat_a": "Sämtliche Fundamente in C30/37, XC2.",
+        "zitat_b": "Streifenfundament C20/25 herstellen.",
+        "begruendung": "In Vorbemerkung (OZ 0.2) wird für alle Fundamente C30/37 gefordert, während in Position (OZ 2.1) ein Streifenfundament C20/25 angegeben ist. Die Angaben widersprechen sich ohne Hinweis auf eine Ausnahme.",
+        "rueckfrage": "Bitte klären Sie, welche Betonklasse für das Streifenfundament tatsächlich vorgesehen ist."
+      }
+    },
+    {
+      "id": "W+03",
+      "pruefung": "widerspruch",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag verworfen: Zitat nicht im Original",
+      "quelle": "API",
+      "gueltig": false,
+      "richtig": false,
+      "grund": "Zitat nicht wörtlich",
+      "antwort": {
+        "einordnung": "echter Widerspruch",
+        "oz_a": "3.1",
+        "oz_b": "3.2",
+        "zitat_a": "Menge: 120 m",
+        "zitat_b": "Menge: 150 m",
+        "begruendung": "In Position 3.1 wird die Menge des Bordsteins mit 120 m angegeben, während die Zulage in Position 3.2 für dieselbe Leistung mit 150 m angegeben wird. Die Mengenangaben sind unvereinbar.",
+        "rueckfrage": "Bitte klären Sie, ob die Zulage in Pos. 3.2 die Menge von Pos. 3.1 ergänzen oder ersetzen soll."
+      }
+    },
+    {
+      "id": "W+04",
+      "pruefung": "widerspruch",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "echter Widerspruch",
+      "antwort": {
+        "einordnung": "echter Widerspruch",
+        "oz_a": "0.3",
+        "oz_b": "4.1",
+        "zitat_a": "Alle Türen in RAL 7016 beschichtet.",
+        "zitat_b": "Innentür 88,5/213, Oberfläche RAL 9010.",
+        "begruendung": "In OZ 0.3 wird für alle Türen die Farbe RAL 7016 angegeben, während OZ 4.1 für die Innentür die Farbe RAL 9010 nennt. Die Angaben widersprechen sich, da keine abweichende Regelung vermerkt ist.",
+        "rueckfrage": "Bitte bestätigen Sie, welche RAL‑Farbe für die Innentüren gelten soll."
+      }
+    },
+    {
+      "id": "W+05",
+      "pruefung": "widerspruch",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag verworfen: Zitat nicht im Original",
+      "quelle": "API",
+      "gueltig": false,
+      "richtig": false,
+      "grund": "Zitat nicht wörtlich",
+      "antwort": {
+        "einordnung": "echter Widerspruch",
+        "oz_a": "5.1",
+        "oz_b": "5.2",
+        "zitat_a": "Menge: 100 m³",
+        "zitat_b": "Menge: 200 m³",
+        "begruendung": "In Position 5.1 wird ein Aushub von 100 m³ angegeben, während Position 5.2 für die Abfuhr 200 m³ des Aushubs aus Pos. 5.1 verlangt. Die Mengenangaben sind unvereinbar.",
+        "rueckfrage": "Bitte klären Sie, ob die abzutransportierende Menge 100 m³ oder 200 m³ beträgt."
+      }
+    },
+    {
+      "id": "W+06",
+      "pruefung": "widerspruch",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "echter Widerspruch",
+      "antwort": {
+        "einordnung": "echter Widerspruch",
+        "oz_a": "0.4",
+        "oz_b": "6.1",
+        "zitat_a": "Im Bereich der Gasleitung Aushub nur in Handschachtung.",
+        "zitat_b": "Grabenaushub maschinell an der Gasleitung.",
+        "begruendung": "In OZ 0.4 wird für die Gasleitung ausschließlich Hand­schachtung gefordert, während OZ 6.1 maschinellen Grabenaushub an derselben Gasleitung verlangt. Die Angaben widersprechen sich eindeutig.",
+        "rueckfrage": "Bitte klären Sie, ob der Aushub der Gasleitung hand- oder maschinell erfolgen soll."
+      }
+    },
+    {
+      "id": "W+07",
+      "pruefung": "widerspruch",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "echter Widerspruch",
+      "antwort": {
+        "einordnung": "echter Widerspruch",
+        "oz_a": "7.1",
+        "oz_b": "7.2",
+        "zitat_a": "Schacht DN 1000, Tiefe 2,5 m.",
+        "zitat_b": "Schachtabdeckung DN 625 für Schacht DN 800 aus Pos. 7.1.",
+        "begruendung": "In OZ 7.1 wird ein Schacht mit DN 1000 angegeben, während in OZ 7.2 eine Abdeckung für einen Schacht DN 800 gefordert wird. Die Angaben zum Durchmesser sind somit unvereinbar.",
+        "rueckfrage": "Bitte bestätigen Sie, welcher Schachtdurchmesser für die Abdeckung vorgesehen ist."
+      }
+    },
+    {
+      "id": "W+08",
+      "pruefung": "widerspruch",
+      "erwartet": "Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": false,
+      "grund": "gewollt verschieden",
+      "antwort": {
+        "einordnung": "gewollt verschieden",
+        "oz_a": "8.1",
+        "oz_b": "8.2",
+        "zitat_a": "Abdichtung nach DIN 18533, W2.1-E (drückendes Wasser).",
+        "zitat_b": "Hohlkehle zur Abdichtung aus 8.1, W1-E.",
+        "begruendung": "Position 8.1 beschreibt die generelle Kellerwandabdichtung, Position 8.2 spezifiziert eine Hohlkehle als Teil davon mit anderer Klassifizierung (W1‑E).",
+        "rueckfrage": ""
+      }
+    },
+    {
+      "id": "W-01",
+      "pruefung": "widerspruch",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "gewollt verschieden",
+      "antwort": {
+        "einordnung": "gewollt verschieden",
+        "oz_a": "1.1",
+        "oz_b": "1.2",
+        "zitat_a": "Kurztext: Hausanschluss DN 150\nLangtext: Hausanschlussleitung DN 150.\nMenge: 20 m",
+        "zitat_b": "Kurztext: Hauptleitung DN 300\nLangtext: Hauptleitung DN 300.\nMenge: 200 m",
+        "begruendung": "In Position 1.1 wird ein Hausanschluss mit DN 150 angegeben, in Position 1.2 eine Hauptleitung mit DN 300. Die Angaben beziehen sich auf unterschiedliche Bauteile.",
+        "rueckfrage": ""
+      }
+    },
+    {
+      "id": "W-02",
+      "pruefung": "widerspruch",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "unklar",
+      "antwort": {
+        "einordnung": "unklar",
+        "oz_a": "2.1",
+        "oz_b": "2.2",
+        "zitat_a": "Fundament C25/30, sofern nicht anders angegeben.",
+        "zitat_b": "Außenwand C30/37 WU.",
+        "begruendung": "Die beiden Positionen beziehen sich auf unterschiedliche Bauteile (Fundament vs. Außenwand) und enthalten keine widersprüchlichen Angaben. Eine Einordnung ist daher nicht möglich.",
+        "rueckfrage": "Können Sie bitte bestätigen, ob die beiden Positionen unabhängig voneinander zu bewerten sind?"
+      }
+    },
+    {
+      "id": "W-03",
+      "pruefung": "widerspruch",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "gewollt verschieden",
+      "antwort": {
+        "einordnung": "gewollt verschieden",
+        "oz_a": "3.1",
+        "oz_b": "3.2",
+        "zitat_a": "Kurztext: Rohr DN 150\nLangtext: PE-HD-Rohr DN 150 verlegen.",
+        "zitat_b": "Kurztext: wie vor, jedoch DN 200\nLangtext: wie vor, jedoch DN 200.",
+        "begruendung": "In Position 3.1 wird ein PE‑HD‑Rohr DN 150 angegeben, während Position 3.2 ausdrücklich „wie vor, jedoch DN 200“ nennt und damit einen anderen Durchmesser vorsieht. Der Unterschied wird im Text erklärt.",
+        "rueckfrage": ""
+      }
+    },
+    {
+      "id": "W-04",
+      "pruefung": "widerspruch",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "gewollt verschieden",
+      "antwort": {
+        "einordnung": "gewollt verschieden",
+        "oz_a": "4.1",
+        "oz_b": "4.2",
+        "zitat_a": "Kurztext: Pflaster grau",
+        "zitat_b": "Kurztext: Pflaster anthrazit, Alternativposition",
+        "begruendung": "Position 4.1 nennt \"Pflaster grau\" und Position 4.2 nennt \"Pflaster anthrazit\" als Alternativposition zu 4.1. Der Text erklärt den Unterschied ausdrücklich als Alternative.",
+        "rueckfrage": ""
+      }
+    },
+    {
+      "id": "W-05",
+      "pruefung": "widerspruch",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "gewollt verschieden",
+      "antwort": {
+        "einordnung": "gewollt verschieden",
+        "oz_a": "5.1",
+        "oz_b": "5.2",
+        "zitat_a": "Kurztext: Bordstein Hochbord Langtext: Hochbord 15/30. Menge: 120 m",
+        "zitat_b": "Kurztext: Zulage Rundbord zu Pos. 5.1 Langtext: Zulage Rundbord zu Pos. 5.1. Menge: 20 m",
+        "begruendung": "Position 5.1 beschreibt den Hochbord mit 120 m, während Position 5.2 ausdrücklich als Zulage zum Hochbord (Rundbord) mit 20 m angegeben ist. Der Unterschied wird im Text als Zusatzleistung erklärt.",
+        "rueckfrage": ""
+      }
+    },
+    {
+      "id": "W-06",
+      "pruefung": "widerspruch",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "gewollt verschieden",
+      "antwort": {
+        "einordnung": "gewollt verschieden",
+        "oz_a": "6.1",
+        "oz_b": "6.2",
+        "zitat_a": "Kurztext: Einweisung [PERSON_115] Langtext: Einweisung durch [PERSON_115]. Menge: 1 psch",
+        "zitat_b": "Kurztext: Abnahme [PERSON_116] Langtext: Abnahme durch [PERSON_116]. Menge: 1 psch",
+        "begruendung": "Position 6.1 beschreibt die Einweisung, Position 6.2 die Abnahme, unterschiedliche Leistungen. Die Texte geben keine widersprüchlichen Angaben. ",
+        "rueckfrage": ""
+      }
+    },
+    {
+      "id": "W-07",
+      "pruefung": "widerspruch",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "gewollt verschieden",
+      "antwort": {
+        "einordnung": "gewollt verschieden",
+        "oz_a": "7.1",
+        "oz_b": "7.2",
+        "zitat_a": "Boden lösen, laden, 100 m³.",
+        "zitat_b": "Abfuhr 80 m³, Rest Wiedereinbau aus Pos. 7.1.",
+        "begruendung": "Position 7.1 gibt die Menge von 100 m³ Aushub an, Position 7.2 spezifiziert, dass davon 80 m³ abgeführt und der Rest wieder eingebaut wird. Der Unterschied ist im Text erklärt.",
+        "rueckfrage": ""
+      }
+    },
+    {
+      "id": "W-08",
+      "pruefung": "widerspruch",
+      "erwartet": "kein Fund",
+      "status": "KI-Vorschlag gültig",
+      "quelle": "API",
+      "gueltig": true,
+      "richtig": true,
+      "grund": "unklar",
+      "antwort": {
+        "einordnung": "unklar",
+        "oz_a": "8.1",
+        "oz_b": "8.2",
+        "zitat_a": "Bedarfsposition: Fels lösen.",
+        "zitat_b": "Boden der Klasse 3–5 lösen.",
+        "begruendung": "Die Position 8.1 bezieht sich auf das Lösen von Fels, Position 8.2 auf das Lösen von Boden der Klasse 3–5. Es ist nicht ersichtlich, dass beide dieselbe Leistung beschreiben.",
+        "rueckfrage": "Bitte klären Sie, ob die Positionen 8.1 und 8.2 unterschiedliche Leistungen betreffen oder ob ein Zusammenhang besteht."
+      }
+    }
+  ],
+  "hinweis": "erfundene Fälle (Sitzung B2), keine Messung der Treffsicherheit am Datensatz"
+}

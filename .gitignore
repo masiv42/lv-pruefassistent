@@ -1,0 +1,24 @@
+# Python-Bytecode und macOS-Ordnerdaten (Team, 21.11.2026)
+__pycache__/
+.DS_Store
+
+# Originaldaten und Zugangsdaten nicht im Repo (Team, 21.11.2026)
+data/raw/
+.env
+
+# Browser-Downloads des Risikoberichts und Numbers-Dateien nicht im Repo (Team, 21.11.2026)
+/Risikobericht_*.xlsx
+data/qa/*.numbers
+
+# Demo-LV aus src/demo_lv.py (Kopie mit Originaltext, nicht im Repo; Team 21.11.2026, B2-F15)
+demo/
+
+# Erfahrungsdatenbank aus menschlichen Entscheidungen (M2c, Team 22.11.2026)
+data/erfahrung/
+
+# Abgabe-Repo: lokale Daten bleiben draußen
+data/findings/
+data/ki_cache/
+data/parsed/
+data/qa/s2_ergebnis.json
+archiv/

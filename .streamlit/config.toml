@@ -1,0 +1,81 @@
+# Design-System der App (Sitzung UI, Team 22.11.2026). Farben stehen nur hier; src/ui_stil.py nutzt die Theme-Variablen.
+# Kein `base`: Der Browser bzw. das Streamlit-Menü wählt Dark oder Light.
+# Farbsemantik (R6): Rot = nachweisbarer Fehler · Orange/Bernstein = möglicher Widerspruch, Risikohinweis ·
+# Grau = Unklarheit und Stufen-Abzeichen · Grün = nur erledigte Status · Blau = Akzent und Bedienung.
+[theme]
+font = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+codeFont = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+baseFontSize = 14
+baseRadius = "6px"
+buttonRadius = "6px"
+showWidgetBorder = true
+headingFontWeights = [650, 620, 600, 600, 600, 600]
+headingFontSizes = ["1.6rem", "1.2rem", "1.05rem", "1rem", "0.95rem", "0.9rem"]
+
+[theme.dark]
+primaryColor = "#2F6BE4"
+backgroundColor = "#0E1420"
+secondaryBackgroundColor = "#172033"
+textColor = "#E6EAF2"
+linkColor = "#8DB8FF"
+borderColor = "#2A3650"
+codeBackgroundColor = "#172033"
+dataframeBorderColor = "#232E45"
+dataframeHeaderBackgroundColor = "#172033"
+redColor = "#E5646A"
+redTextColor = "#FF9EA2"
+redBackgroundColor = "#3A1B24"
+orangeColor = "#E0A33A"
+orangeTextColor = "#F4C76F"
+orangeBackgroundColor = "#352A12"
+grayColor = "#8B96AA"
+grayTextColor = "#BAC3D1"
+grayBackgroundColor = "#222C3F"
+greenColor = "#3FB58A"
+greenTextColor = "#74DDB6"
+greenBackgroundColor = "#10302A"
+blueColor = "#5B9BFF"
+blueTextColor = "#9CC3FF"
+blueBackgroundColor = "#16294A"
+
+[theme.dark.sidebar]
+backgroundColor = "#0A101A"
+secondaryBackgroundColor = "#141C2C"
+borderColor = "#232E45"
+
+[theme.light]
+primaryColor = "#1F5FD6"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F2F4F8"
+textColor = "#172033"
+linkColor = "#174BB0"
+borderColor = "#D5DBE6"
+codeBackgroundColor = "#F2F4F8"
+dataframeBorderColor = "#E1E5ED"
+dataframeHeaderBackgroundColor = "#F2F4F8"
+redColor = "#C62F3A"
+redTextColor = "#A1202B"
+redBackgroundColor = "#FCEBEC"
+orangeColor = "#B86E00"
+orangeTextColor = "#7F4B00"
+orangeBackgroundColor = "#FDF1DC"
+grayColor = "#667085"
+grayTextColor = "#465166"
+grayBackgroundColor = "#EDF0F5"
+greenColor = "#1B8A5F"
+greenTextColor = "#116344"
+greenBackgroundColor = "#E3F5EC"
+blueColor = "#1F5FD6"
+blueTextColor = "#174BB0"
+blueBackgroundColor = "#E6EEFC"
+
+[theme.light.sidebar]
+backgroundColor = "#F6F7FA"
+secondaryBackgroundColor = "#ECEFF4"
+borderColor = "#DDE2EB"
+
+[client]
+toolbarMode = "viewer"
+
+[browser]
+gatherUsageStats = false
