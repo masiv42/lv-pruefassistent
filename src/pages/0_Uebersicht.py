@@ -114,7 +114,7 @@ def seite():
             k1, k2, _ = st.columns([1, 1, 3])                          # A3 (UI2): Dashboard → Fund / Position
             if k1.button("Fund öffnen", key=f"ue-fund-{i_f}", width="stretch"):
                 lv_sitzung.fokus_setzen(fund_id=f["id"])
-                st.switch_page("app.py")
+                st.switch_page("pages/funde.py")
             if k2.button("Zur Position", key=f"ue-pos-{i_f}", width="stretch"):
                 lv_sitzung.fokus_setzen(oz=p["oz"])
                 st.switch_page("pages/2_Positionen.py")

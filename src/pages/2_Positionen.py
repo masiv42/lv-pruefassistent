@@ -98,18 +98,10 @@ def detail(z, pruef):
     st.subheader(f"OZ {ui_stil.md_text(z['oz'])}", anchor=False)
     if z["titel"]:
         st.caption(ui_stil.md_text(z["titel"]))
-    einheit = f" {z['einheit']}" if z["einheit"] else ""
-    ui_stil.kacheln([ui_stil.Kachel("Menge", _de(z["menge"], 3) + (einheit if z["menge"] is not None else ""), "laut LV"),
-                     ui_stil.Kachel("EP", _de(z["ep"], 2), "laut LV"),
-                     ui_stil.Kachel("GP", _de(z["gp"], 2), "laut LV"),
-                     ui_stil.Kachel("Funde", ui_stil.de_zahl(len(z["funde"])),
-                                    f"Seite {z['seite']}" if z["seite"] else "")])
-    links, rechts = st.columns(2, gap="large")
+    links, rechts = st.columns([1.15, 1], gap="large")
     with links:
-        st.markdown("**Kurztext**")
-        ui_stil.textblock(z["kurztext"])
-        st.markdown("**Langtext**")
-        ui_stil.textblock(z["langtext"])
+        import oberflaeche                                      # UI3: Position als Papierblatt, Texte wörtlich
+        st.html(oberflaeche.positionsblatt_html(z, len(z["funde"])))
     with rechts:
         st.markdown(f"**Funde dieser Position ({len(z['funde'])})**")
         if not z["funde"]:
@@ -119,18 +111,18 @@ def detail(z, pruef):
                 st.markdown(ui_stil.abzeichen_fund(f, pruef.get(f["id"])))
                 st.markdown(f"**Nr. {f['pruefung']} {ui_stil.md_text(f['titel'])}**")
                 for b in f["belege"]:
-                    ui_stil.beleg(b)
+                    ui_stil.beleg(b, pruefung=f["pruefung"])
                 for fb in f.get("feldbelege", []):
                     st.caption(f"{ui_stil.md_text(fb['art'])}: {ui_stil.md_text(fb['text'])}")
                 st.markdown(ui_stil.md_text(f["begruendung"]))
                 if f.get("rueckfrage"):
                     st.caption(f"Mögliche Rückfrage: {ui_stil.md_text(f['rueckfrage'])}")
                 if st.button("Fund öffnen", key=f"fund-oeffnen-{f['id']}-{z['zeile']}",
-                             help="Öffnet den Fund auf der Seite „LV-Prüfung“ (Status setzen, KI-Vorschlag)."):
+                             help="Öffnet den Fund auf der Seite „Funde prüfen“ (Status setzen, KI-Vorschlag)."):
                     lv_sitzung.fokus_setzen(fund_id=f["id"])     # A3 (UI2)
-                    st.switch_page("app.py")
+                    st.switch_page("pages/funde.py")
         if z["funde"]:
-            st.caption("Status setzen und KI-Vorschläge ansehen: Seite „LV-Prüfung“.")
+            st.caption("Status setzen und KI-Vorschläge ansehen: Seite „Funde prüfen“.")
 
 
 def seite():
@@ -168,10 +160,10 @@ def seite():
     lv_sitzung.filter_vorbereiten("pos_stufe", [], list(STUFEN))
     lv_sitzung.filter_vorbereiten("pos_sortierung", SORTIERUNG[0], SORTIERUNG)
     lv_sitzung.filter_vorbereiten("pos_nur_fund", False)
-    a, b = st.columns(2)
+    a, b, c, d, g = st.container(key="pos_filter").columns([2, 2, 1.6, 1.4, 1.2],
+                                                           vertical_alignment="bottom")   # B2: eine Filterzeile
     suche = a.text_input("Suche", placeholder="OZ, Titel, Kurz- oder Langtext", key="pos_suche")
     titel = b.multiselect("Titel / Abschnitt", abschnitte(zeilen), key="pos_titel", placeholder="Alle Abschnitte")
-    c, d, g = st.columns([2, 2, 1], vertical_alignment="bottom")
     stufen = c.multiselect("Stufe", list(STUFEN), key="pos_stufe", format_func=ui_stil.stufe_name, placeholder="Alle Stufen")
     art = d.selectbox("Sortierung", SORTIERUNG, key="pos_sortierung")
     nur = g.toggle("Nur mit Fund", key="pos_nur_fund")
@@ -184,10 +176,17 @@ def seite():
                    + (" Die OZ steht in keiner Position dieses LV." if ziel[1] == 0 else ""))
 
     sichtbar = sortierte(filtere(zeilen, suche, titel, stufen, nur), art)
-    ui_stil.kacheln([ui_stil.Kachel("Positionen", ui_stil.de_zahl(len(zeilen)), "im LV"),
-                     ui_stil.Kachel("Mit Fund", ui_stil.de_zahl(mit_fund), "Positionen"),
-                     ui_stil.Kachel("Funde", ui_stil.de_zahl(len(fund_ids(zeilen))), "Hinweise zur Klärung"),
-                     ui_stil.Kachel("Angezeigt", ui_stil.de_zahl(len(sichtbar)), "Positionen nach Filter")])
+    if ui_stil.neues_design():                                     # B2: schmale Kennzeile im neuen Design
+        import oberflaeche
+        oberflaeche.kennzeile([("Positionen im LV", ui_stil.de_zahl(len(zeilen))),
+                               ("mit Fund", ui_stil.de_zahl(mit_fund)),
+                               ("Funde", ui_stil.de_zahl(len(fund_ids(zeilen)))),
+                               ("nach Filter angezeigt", ui_stil.de_zahl(len(sichtbar)))])
+    else:
+        ui_stil.kacheln([ui_stil.Kachel("Positionen", ui_stil.de_zahl(len(zeilen)), "im LV"),
+                         ui_stil.Kachel("Mit Fund", ui_stil.de_zahl(mit_fund), "Positionen"),
+                         ui_stil.Kachel("Funde", ui_stil.de_zahl(len(fund_ids(zeilen))), "Hinweise zur Klärung"),
+                         ui_stil.Kachel("Angezeigt", ui_stil.de_zahl(len(sichtbar)), "Positionen nach Filter")])
     mehrfach = sum(z_n > 1 for z_n in (len({x["oz"] for x in f["positionen"]}) for f in funde))
     if mehrfach:
         st.caption(f"{ui_stil.de_zahl(mehrfach)} Funde betreffen mehrere Positionen. Sie stehen bei jeder dieser "
@@ -203,16 +202,16 @@ def seite():
     schluessel = hashlib.sha256("|".join(str(z["zeile"]) for z in sichtbar).encode()).hexdigest()[:12]
     ereignis = st.dataframe(
         stil, key=f"pos_tabelle_{schluessel}", on_select="rerun", selection_mode="single-row", hide_index=True,
-        width="stretch", height=min(44 + 35 * len(sichtbar), 460), placeholder="–",
+        width="stretch", height=min(44 + 35 * len(sichtbar), 44 + 35 * 12), placeholder="–",
         column_config={"OZ": st.column_config.TextColumn(width=84, pinned=True),
-                       "Titel": st.column_config.TextColumn(width=170),
-                       "Kurztext": st.column_config.TextColumn(width=300),
-                       "Menge": st.column_config.NumberColumn(width=78),
-                       "Einheit": st.column_config.TextColumn(width=62),
-                       "EP": st.column_config.NumberColumn(width=78),
-                       "GP": st.column_config.NumberColumn(width=92),
-                       "Funde": st.column_config.NumberColumn(width=58),
-                       "Höchste Stufe": st.column_config.TextColumn(width=214)})
+                       "Titel": st.column_config.TextColumn(width=130),      # Summe ≤ Hauptbereich bei 1440 px (8)
+                       "Kurztext": st.column_config.TextColumn(width=210),
+                       "Menge": st.column_config.NumberColumn(width=74),
+                       "Einheit": st.column_config.TextColumn(width=58),
+                       "EP": st.column_config.NumberColumn(width=76),
+                       "GP": st.column_config.NumberColumn(width=88),
+                       "Funde": st.column_config.NumberColumn(width=56),
+                       "Höchste Stufe": st.column_config.TextColumn(width=260)})
 
     gezeigt = [z["zeile"] for z in sichtbar]
     auswahl = (schluessel, tuple(ereignis.selection.rows))

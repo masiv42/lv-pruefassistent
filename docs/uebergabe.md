@@ -2,14 +2,12 @@
 
 ## FREIGABE NÖTIG
 
-| Nr | Frage | Vorschlag | Folge bei ja | Folge bei nein |
-|---|---|---|---|---|
-| F1 | Öffentliches Repo masiv42/lv-pruefassistent anlegen und pushen? Lokal gebaut aus arbeit/M7b, Prüfliste in docs/snapshot_anleitung.md | ja | Repo wird angelegt und gepusht | bleibt lokal |
-| F2 | Dürfen die 44 Namen der Originaldateien und kurze LV-Zitate (je Datei höchstens 303 Zeichen) öffentlich stehen? Die Testreihen brauchen sie | ja, sonst Rückfrage an die Orga | Snapshot bleibt so | Namen und Zitate müssen vor dem Push ersetzt und alle Reihen neu geprüft werden |
+Keine offene Frage. F1 und F2 (öffentliches Repo, Dateinamen und kurze Zitate): Team „F1 ja, F2 ja“.
 
 ## Stand
 
-- **Block:** M7b: Abgabe-Repo für die öffentliche Abgabe neu gebaut, ohne s2_ergebnis.json, Bildschirmfotos und zwei Protokolle. Ohne die Datei 36/36 Reihen grün (3 Einzelprüfungen sichtbar übersprungen), mit der Datei 36/36. App-Code gegenüber main unverändert. Nichts gepusht, arbeit/M7b ist nur lokal.
+- **Block I4 (10:38–11:30):** Redesign arbeit/ui3 @ 162f6f0 integriert, mit Belegbild (Team: „Ja, integrieren“, „Mit Belegbild“; Abweichung E8 freigegeben, decisions.md Zeile I4). Tests auf arbeit/I4 vor der Doku: 36/36 Reihen, Doppellauf 13/13, Durchlauf 43 OK / 1 Hinweis / 0 FEHLER, 1.706 Funde (je Prüfung unverändert), test_ui3_oberflaeche 104/104, test_ui_belegbild siehe unten, E11 44/44, data/findings leer. Browser 8502 (lv-app-agent): LV-Schachtbauwerk.pdf hochgeladen, Entscheidungsübersicht 21 Funde, Belegbild S. 10 rahmt „DN 100“ und „DN 150“, keine Serverfehler. README-Grenze zum Belegbild angepasst (L61), L63 und Backlog B8b nachgezogen. Danach main, Team-App 8501 und Abgabe-Repo (zweiter Commit) neu.
+- **Block M7b:** abgeschlossen. Abgabe-Repo angelegt und gepusht: https://github.com/masiv42/lv-pruefassistent, öffentlich, ein Commit 4e00488 aus e38d0e5, 121 Dateien; anonymer Klon inhaltsgleich zum geprüften Ordner. Ohne Belegdatei 36/36 Reihen grün (3 Einzelprüfungen sichtbar übersprungen), mit Belegdatei 36/36. App-Code unverändert. Im Browser wurde der Snapshot nicht geöffnet. Das Team trägt den Link selbst in die Abgabe ein.
 - **Video:** Fund Nr. 1 in 8209.003_Leistungsverzeichnis_leer.X83, OZ 05.01.4, „Beleg am Original geprüft“; im Browser auf 8502 nach 0,5 s sichtbar (erster Aufruf), danach 0,2 s. „Frühere Entscheidung“ wurde in M2c mit auszug_a.pdf und auszug_b.pdf gezeigt (LV_13_ELT.pdf, S. 48–50, Fund Nr. 3, OZ 2.6..1).
 - **Abweichung (gemeldet):** Die Demo-Probe lief auf Teamwunsch im Agenten-Browser auf 8501, AGENTS.md sieht dafür 8502 vor. Nur gelesen; data/findings und Erfahrungsdatenbank waren danach leer. Der Status-Schritt auf 8502 wurde von der Berechtigungsprüfung blockiert und nicht umgangen.
 - **Team-Meldungen:** seit der Übernahme ist keine Fehlermeldung aus der Testliste eingegangen; data/findings ist leer.
@@ -83,7 +81,7 @@
 
 ## Nächster Schritt
 
-Team: Status-Schritt der Demo proben, Testklicks danach nach archiv/ verschieben (E12 (4)), F1 und F2 beantworten. Danach Repo anlegen und M8 Bereitschaft.
+Team: Status-Schritt der Demo proben, Video auf 8501 aufnehmen, Testklicks danach aus data/findings und data/erfahrung nach archiv/ verschieben (E12 (4)), Repo-Link bis 12:00 einreichen. B4: M8 Bereitschaft, nur letzte Fehler.
 
 ## Prüfpunkte
 

@@ -33,7 +33,7 @@ STATUS_FARBE = {"offen": "gray", "bestätigt": "green", "verworfen": "gray", "R�
 BELEG_ABZEICHEN = {"geprüft": ("green", "Beleg am Original geprüft"),
                    "ungeprüft": ("gray", "Beleg noch nicht am Original geprüft"),
                    "nicht im Original": ("orange", "Beleg nicht wörtlich im Original")}
-SEITEN = (("app.py", "LV-Prüfung"), ("pages/0_Uebersicht.py", "Übersicht"), ("pages/2_Positionen.py", "Positionen"),
+SEITEN = (("pages/funde.py", "LV-Prüfung"), ("pages/0_Uebersicht.py", "Übersicht"), ("pages/2_Positionen.py", "Positionen"),
           ("pages/3_Nachtrag_und_Streitpunkte.py", "Nachtragspotenzial und Streitpunkte"),   # M2b (UI2)
           ("pages/1_Zuschlag_und_What-if.py", "Zuschlag und What-if"))
 
@@ -109,8 +109,25 @@ class Kachel:
     hinweis: str = ""
 
 
+ROUTER = "_lv_ui3_router"          # UI3: gesetzt von src/app.py (st.navigation); dann zeichnet oberflaeche.py
+
+
+def neues_design():
+    """True, wenn die Seite unter der neuen Navigation läuft (UI3). Einzeln gestartete Seiten (Tests) behalten den Stil."""
+    try:
+        return bool(st.session_state.get(ROUTER))
+    except Exception:
+        return False
+
+
 def kopf(titel, kontext="", status=()):
     """Einheitlicher Kopf: Seitentitel, Kontext (wird wörtlich angezeigt), Status-Abzeichen (Markdown)."""
+    if neues_design():
+        import oberflaeche
+        oberflaeche.seitenkopf(titel, kontext)
+        if status:
+            st.markdown(" ".join(status))
+        return
     with st.container(key="lv_kopf"):
         st.title(titel, anchor=False)
         if kontext:
@@ -134,6 +151,10 @@ def kacheln_html(liste):
 
 
 def kacheln(liste):
+    if neues_design():
+        import oberflaeche
+        oberflaeche.kennzahlen([oberflaeche.Kennzahl(k.bezeichnung, k.wert, k.hinweis) for k in liste])
+        return
     st.html(kacheln_html(liste))
 
 
@@ -178,8 +199,12 @@ def beleg_html(text):
     return f'<blockquote class="lv-beleg">{_html_text(text)}</blockquote>'
 
 
-def beleg(text):
+def beleg(text, pruefung=None):
     """Wörtliches Zitat ohne Markdown-Verarbeitung, damit es Zeichen für Zeichen stehen bleibt (R5)."""
+    if neues_design():
+        import oberflaeche
+        oberflaeche.beleg(text, pruefung=pruefung)
+        return
     st.html(beleg_html(text))
 
 
@@ -212,7 +237,9 @@ def ki_bereich(schluessel):
 
 def navigation():
     """Einheitliche Navigation mit fachlichen Namen. Sind die Seiten nicht registriert (z. B. AppTest einer Einzelseite),
-    bleibt die Standard-Navigation von Streamlit."""
+    bleibt die Standard-Navigation von Streamlit. Unter der neuen Navigation (UI3) zeichnet app.py die Seitenleiste."""
+    if neues_design():
+        return True
     if not all((Path(__file__).resolve().parent / pfad).exists() for pfad, _ in SEITEN):
         return False
     with st.sidebar:
@@ -327,6 +354,9 @@ def css():
 
 
 def stil_einbinden():
-    """Bindet das CSS ein (je Seite einmal aufrufen). LV_UI_OHNE_CSS=1 lässt es weg (Prüfung der Nutzbarkeit)."""
+    """Bindet das CSS ein (je Seite einmal aufrufen). LV_UI_OHNE_CSS=1 lässt es weg (Prüfung der Nutzbarkeit).
+    Unter der neuen Navigation (UI3) bindet app.py das CSS aus oberflaeche.py ein."""
+    if neues_design():
+        return
     if not os.environ.get(OHNE_CSS):
         st.markdown(css(), unsafe_allow_html=True)

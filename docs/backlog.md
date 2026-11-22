@@ -31,6 +31,6 @@ Zuordnung der Lücken L21–L32: F6 (Team, 21.11.2026), siehe docs/luecken.md.
 | S3 | Belegprüfung aller übrigen Funde in GAEB XML, GAEB 90 und PDF (Team, L60) | – | L60 | erledigt, auf main (docs/bericht_S3.md) |
 | S2 | Belegprüfung der 31 Funde aus B1p3 am Original, src/skeptiker_s2.py (Team, F2) | – | L57 | erledigt, auf main (docs/bericht_S2.md) |
 | M2c | Erfahrungsdatenbank aus menschlichen Entscheidungen, SQLite (Team 01:25) | – | – | erledigt, auf main (docs/bericht_M2.md) |
-| B8b | Beleg am Original als Bild (src/belegbild.py), in der Detailansicht nur auf Klick | – | L61 | nicht integriert (Team 08:26), bleibt auf arbeit/I3 |
+| B8b | Beleg am Original als Bild (src/belegbild.py), in der Detailansicht nur auf Klick | – | L61 | integriert mit arbeit/ui3 (I4, Team 10:38); L61 bleibt bekannte Grenze im README |
 | B8c | Positions-Explorer (src/pages/2_Positionen.py) | – | – | erledigt, auf main (docs/bericht_I1.md) |
 | B8d | Startdatei start_app.command, Abschnitt „So startest du die App“ in README.md (Projektbeschreibung in README bleibt bei Sitzung B4) | – | – | erledigt, auf main (I2) |

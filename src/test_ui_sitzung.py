@@ -64,7 +64,9 @@ def x83(rnos):
 
 def texte(at):
     """Markdown und Captions ohne Markdown-Maskierung (ui_stil.md_text setzt Backslashes)."""
-    return " ".join(x.value.replace("\\", "") for x in list(at.markdown) + list(at.caption))
+    teile = [x.value.replace("\\", "") for x in list(at.markdown) + list(at.caption)]
+    teile += [x.proto.body for x in at.get("html")]                 # UI3: Kopf und Bausteine als HTML
+    return " ".join(teile)
 
 
 def knoepfe(at):
@@ -87,6 +89,8 @@ if __name__ == "__main__":
     at = AppTest.from_file(str(SRC / "app.py"), default_timeout=180).run()
     check("Start ohne LV: keine Ausnahme", not at.exception, str(at.exception))
     lade(at, "Erfunden-Sitzung.X83", x83(["0010", "0020"]))
+    check("Nach dem Upload: Entscheidungsübersicht", not at.exception and "Zuerst klären" in texte(at), str(at.exception))
+    at.switch_page("pages/funde.py").run()                          # UI3: Status wird auf „Funde prüfen“ gesetzt
     check("LV geladen: Statusknöpfe da", "Bestätigen" in knoepfe(at) and not at.exception, str(at.exception))
     knoepfe(at)["Bestätigen"].click().run()
     check("Status gesetzt", knoepfe(at)["Bestätigen"].disabled)
@@ -105,17 +109,21 @@ if __name__ == "__main__":
     if feld:
         feld[0].input("Erfundene Begründung").run()
 
-    at.switch_page("pages/0_Uebersicht.py").run()
+    at.switch_page("pages/uebersicht.py").run()
     check("Übersicht zeigt das LV", not at.exception and "Erfunden-Sitzung.X83" in texte(at), str(at.exception))
+    # Auflage 7 gilt für die bisherige Übersichtsseite (0_Uebersicht.py, seit UI3 nicht in der Navigation): einzeln geprüft
     import json
-    charts = at.get("vega_lite_chart")
+    alt = AppTest.from_file(str(SRC / "pages" / "0_Uebersicht.py"), default_timeout=60)
+    alt.session_state["lv_uebersicht"] = at.session_state["lv_uebersicht"]
+    alt.run()
+    charts = alt.get("vega_lite_chart")
     spec = json.loads(charts[0].proto.spec) if charts else {}
     marks = [(l.get("mark") or {}) for l in spec.get("layer", [])]
     kodiert = [l.get("encoding", {}) for l in spec.get("layer", [])]
     check("Diagramm: Zahl am Balken, ein neutraler Ton, keine Farbcodierung (Auflage 7)",
           [m.get("type") for m in marks] == ["bar", "text"] and marks[0].get("color") == "#7C8BA3"
           and not any("color" in k for k in kodiert), str(marks)[:200])
-    at.switch_page("app.py").run()
+    at.switch_page("pages/funde.py").run()
     b = knoepfe(at)
     check("Nach Seitenwechsel: LV noch geladen (B8e)", "Bestätigen" in b, str(list(b)))
     check("Nach Seitenwechsel: Status bleibt", "Bestätigen" in b and b["Bestätigen"].disabled)
@@ -146,8 +154,8 @@ if __name__ == "__main__":
             check("Rücksprung: Filter so erweitert, dass der Fund sichtbar ist",
                   "pf_stufe" in at.session_state and 1 in at.session_state["pf_stufe"])
             at.multiselect(key="pf_stufe").set_value([1]).run()
-    at.switch_page("pages/0_Uebersicht.py").run()
-    at.switch_page("app.py").run()
+    at.switch_page("pages/uebersicht.py").run()
+    at.switch_page("pages/funde.py").run()
     check("Filter übersteht Seitenwechsel", "pf_stufe" in at.session_state and at.session_state["pf_stufe"] == [1],
           str(at.session_state["pf_stufe"]) if "pf_stufe" in at.session_state else "fehlt")
 
@@ -155,7 +163,7 @@ if __name__ == "__main__":
     for seite in ("pages/2_Positionen.py", "pages/1_Zuschlag_und_What-if.py"):
         at.switch_page(seite).run()
         check(f"{seite}: keine Ausnahme", not at.exception, str(at.exception))
-    at.switch_page("app.py").run()
+    at.switch_page("pages/funde.py").run()
 
     # Neuer Upload ersetzt das aktuelle LV sichtbar
     lade(at, "Erfunden-Zweites.X83", x83(["0030"]))
@@ -172,19 +180,16 @@ if __name__ == "__main__":
     check("„Anderes LV laden“ entfernt das aktuelle LV", "Bestätigen" not in knoepfe(at)
           and lv_sitzung.AKTUELL in at.session_state and at.session_state[lv_sitzung.AKTUELL] is None)
 
-    # Navigation vollständig: jede Seite in pages/ steht in ui_stil.SEITEN (sonst wäre sie mit ausgeblendeter
-    # Standard-Navigation nicht erreichbar, z. B. Seite 3 aus M2b)
-    import ui_stil
-    in_nav = {pfad for pfad, _ in ui_stil.SEITEN}
-    dateien = {"app.py"} | {f"pages/{p.name}" for p in (SRC / "pages").glob("*.py")}
-    check("Navigation nennt jede Seite", dateien == in_nav, str(dateien ^ in_nav))
-    check("LV-Prüfung steht zuerst (Auflage 4)", ui_stil.SEITEN[0][0] == "app.py")
-    # Auflage 5: jede Seite ruft die Navigation auf (sonst fehlt sie bei ausgeblendeter Standard-Navigation)
-    quellen = {pfad: (SRC / pfad).read_text(encoding="utf-8") for pfad in dateien}
-    quellen["pages/1_Zuschlag_und_What-if.py"] += (SRC / "seite_zuschlag.py").read_text(encoding="utf-8")
-    ohne_nav = [pfad for pfad, q in quellen.items() if "ui_stil.navigation()" not in q]
-    check("Jede Seite ruft ui_stil.navigation() auf (Auflage 5)", not ohne_nav, str(ohne_nav))
-
+    # Navigation vollständig (UI3): jede Seite in pages/ ist in app.py registriert, außer der abgelösten
+    # 0_Uebersicht.py (Lücke an das Team gemeldet); die Seitenleiste zeichnet app.py für jede Seite (Auflage 5)
+    router = (SRC / "app.py").read_text(encoding="utf-8")
+    registriert = set(re.findall(r'st\.Page\("([^"]+)"', router))
+    dateien = {f"pages/{p.name}" for p in (SRC / "pages").glob("*.py")} - {"pages/0_Uebersicht.py"}
+    check("Navigation nennt jede Seite", dateien == registriert, str(dateien ^ registriert))
+    check("Startseite ist die Entscheidungsübersicht (Drehbuch beginnt dort)",
+          re.search(r'st\.Page\("pages/uebersicht\.py"[^)]*default=True', router) is not None)
+    check("Seitenleiste und Statusleiste für alle Seiten im Router (Auflage 5)",
+          "ui.seitenleiste(" in router and "ui.statusleiste(" in router and "position=\"hidden\"" in router)
     projekt = SRC.parent / "data" / "findings"
     check("Keine Statusdatei im Projekt (E12 (4))", not (projekt / "Erfunden-Sitzung.X83.json").exists())
     print(f"\n{sum(ergebnisse)}/{len(ergebnisse)} Tests bestanden")

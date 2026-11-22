@@ -50,7 +50,7 @@ Zu Zeitersparnis, Trefferquote oder Vollständigkeit gibt es keine Messung, desh
 - Nr. 16 kennt nur nummerierte Abschnitte. In `LV_08_Fliesen_und_Natursteinarbeiten.pdf` stehen drei Funde unter verschiedenen Zwischenüberschriften und sind ein möglicher Fehlalarm.
 - Zitiert die KI nur die Mengenzeile, wird der Vorschlag verworfen. Mengen-Widersprüche zwischen Positionen findet die KI dadurch teilweise nicht.
 - Text in Bildern und Word-Dokumente werden nicht gelesen.
-- Der Beleg als Bild der Originalseite ist nicht Teil dieser Abgabe. Der Entwurf rahmt auf einer Seite nur den ersten Treffer, und bei 337 von 1.118 PDF-Funden steht der Beleg mehrfach auf der Seite.
+- Der Beleg als Bild der Originalseite (nur PDF, auf Klick) rahmt auf einer Seite den ersten Treffer, nicht zwingend den in der eigenen Position. Bei 337 von 1.118 PDF-Funden steht der Beleg mehrfach auf der Seite; dort kann der Rahmen eine andere Stelle zeigen. Maßgeblich ist der wörtliche Beleg im Text.
 
 ## Projektaufbau
 
@@ -83,7 +83,7 @@ Dieses Repo enthält weder die Originaldateien der Challenge noch den KI-Cache. 
 
 1. Einmalig `uv` installieren (https://docs.astral.sh/uv/getting-started/installation/).
 2. Im Finder im Projektordner `start_app.command` doppelt anklicken. Beim ersten Mal lädt `uv` die festen
-   Bibliotheksversionen; danach öffnet sich der Browser mit der Seite „LV-Prüfung“.
+   Bibliotheksversionen; danach öffnet sich der Browser mit der Startseite (Entscheidungsübersicht), die erklärt, was das Tool tut.
 3. Ein LV hochladen (GAEB XML, GAEB 90, PDF oder Excel). Ohne `.env` mit API-Key läuft die App mit „KI aus“: Alle
    Regel-Funde, Belege, Berichte und Exporte funktionieren, nur die KI-Vorschläge entfallen.
 4. Beenden: Ctrl+C im Terminalfenster oder das Fenster schließen.

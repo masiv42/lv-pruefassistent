@@ -16,20 +16,38 @@ import ui_stil                                                     # noqa: E402
 LEER = ("Noch kein LV geprüft. Bitte auf der Hauptseite „LV-Prüfung“ ein LV hochladen; die Sicht erscheint danach "
         "hier.")
 
-st.set_page_config(page_title="Nachtragspotenzial und Streitpunkte · LV-Prüfassistent", layout="wide")
+# R7 (Team 22.11.2026, Block B3): Anzeige „Mögliches Nachtragspotenzial“; SEITENTITEL bleibt (Blattname im Export, Tests)
+ANZEIGE_TITEL = "Mögliches Nachtragspotenzial und mögliche Streitpunkte"
+
+
+def hinweis_oben():
+    """Im neuen Design der neutrale Hinweis-Baustein, sonst st.info (gleicher Wortlaut)."""
+    if ui_stil.neues_design():
+        import oberflaeche
+        oberflaeche.hinweis(HINWEIS)
+    else:
+        st.info(HINWEIS)
+
+
+SPALTEN_BREITE = {"Nr.": 48, "Abschnitt": 220, "OZ": 96, "Kurztext": 260, "Beleg (wörtlich aus dem LV)": 360,
+                  "Prüfung": 200, "Kategorie": 150, "Stufe": 170, "Handlungsempfehlung": 160,
+                  "Bieterfrage (Entwurf)": 360, "Status": 110, "Fund-ID": 220}
+
+st.set_page_config(page_title="Mögliches Nachtragspotenzial · LV-Prüfassistent", layout="wide")
 ui_stil.stil_einbinden()
 ui_stil.navigation()
 e = st.session_state.get("lv_uebersicht")
 if not e:
-    ui_stil.kopf(SEITENTITEL, "Noch kein LV geladen")
-    st.info(HINWEIS)
+    ui_stil.kopf(ANZEIGE_TITEL if ui_stil.neues_design() else SEITENTITEL, "Noch kein LV geladen")
+    hinweis_oben()
     st.write(LEER)
     st.stop()
 
 funde = e.get("funde") or []
 kurz = e.get("kurztexte") or {}
-ui_stil.kopf(SEITENTITEL, f"{Path(e['lv_name']).name} · {ui_stil.de_zahl(e['positionen'])} Positionen")
-st.info(HINWEIS)
+ui_stil.kopf(ANZEIGE_TITEL if ui_stil.neues_design() else SEITENTITEL,
+             f"{Path(e['lv_name']).name} · {ui_stil.de_zahl(e['positionen'])} Positionen")
+hinweis_oben()
 st.markdown("Sicht auf die vorhandenen Regel-Funde, jeder mit wörtlichem Beleg.")
 st.caption("Die Zahlen sind Zählungen je LV. KI-Vorschläge ändern diese Liste nicht; sie stehen in der Detailansicht und "
            "im Blatt „KI-Vorschläge“. Export: Blatt „Nachtrag und Streitpunkte“ im Risikobericht.")
@@ -42,6 +60,8 @@ for k, a in ABSCHNITTE.items():
     st.caption(" · ".join(f"Nr. {nr} {PRUEFUNGEN[nr]}: {n}" for nr, n in zahlen[k]["je_pruefung"].items()))
     liste = [{s: z[s] for s in SPALTEN if s != "Abschnitt"} for z in alle if z["Abschnitt"] == a["titel"]]
     if liste:
-        st.dataframe(liste, hide_index=True, width="stretch")
+        st.dataframe(liste, hide_index=True, width="stretch",          # B3: Spaltenbreiten statt Abschneiden
+                     column_config={s: st.column_config.TextColumn(width=w) for s, w in SPALTEN_BREITE.items()
+                                    if s != "Abschnitt"})
     else:
         st.write(KEINE)

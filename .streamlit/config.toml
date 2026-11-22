@@ -1,4 +1,5 @@
-# Design-System der App (Sitzung UI, Team 22.11.2026). Farben stehen nur hier; src/ui_stil.py nutzt die Theme-Variablen.
+# Design-System der App (Sitzung UI, Team 22.11.2026; UI3-6: Graphit, ruhige Flächen; Farbe nur im Beleg und in der LV-Karte).
+# Widget-Farben stehen hier; die Flächen der eigenen Bausteine in src/oberflaeche.py (FARBEN, gleiche Werte).
 # Kein `base`: Der Browser bzw. das Streamlit-Menü wählt Dark oder Light.
 # Farbsemantik (R6): Rot = nachweisbarer Fehler · Orange/Bernstein = möglicher Widerspruch, Risikohinweis ·
 # Grau = Unklarheit und Stufen-Abzeichen · Grün = nur erledigte Status · Blau = Akzent und Bedienung.
@@ -14,14 +15,14 @@ headingFontSizes = ["1.6rem", "1.2rem", "1.05rem", "1rem", "0.95rem", "0.9rem"]
 
 [theme.dark]
 primaryColor = "#2F6BE4"
-backgroundColor = "#0E1420"
-secondaryBackgroundColor = "#172033"
-textColor = "#E6EAF2"
+backgroundColor = "#141415"
+secondaryBackgroundColor = "#232325"
+textColor = "#EDEDED"
 linkColor = "#8DB8FF"
-borderColor = "#2A3650"
-codeBackgroundColor = "#172033"
-dataframeBorderColor = "#232E45"
-dataframeHeaderBackgroundColor = "#172033"
+borderColor = "#2A2A2D"
+codeBackgroundColor = "#19191B"
+dataframeBorderColor = "#2A2A2D"
+dataframeHeaderBackgroundColor = "#19191B"
 redColor = "#E5646A"
 redTextColor = "#FF9EA2"
 redBackgroundColor = "#3A1B24"
@@ -39,20 +40,20 @@ blueTextColor = "#9CC3FF"
 blueBackgroundColor = "#16294A"
 
 [theme.dark.sidebar]
-backgroundColor = "#0A101A"
-secondaryBackgroundColor = "#141C2C"
-borderColor = "#232E45"
+backgroundColor = "#0F0F10"
+secondaryBackgroundColor = "#19191B"
+borderColor = "#2A2A2D"
 
 [theme.light]
 primaryColor = "#1F5FD6"
-backgroundColor = "#FFFFFF"
-secondaryBackgroundColor = "#F2F4F8"
-textColor = "#172033"
+backgroundColor = "#F7F7F5"
+secondaryBackgroundColor = "#F3F3F1"
+textColor = "#171717"
 linkColor = "#174BB0"
-borderColor = "#D5DBE6"
-codeBackgroundColor = "#F2F4F8"
-dataframeBorderColor = "#E1E5ED"
-dataframeHeaderBackgroundColor = "#F2F4F8"
+borderColor = "#E3E3E0"
+codeBackgroundColor = "#F3F3F1"
+dataframeBorderColor = "#E3E3E0"
+dataframeHeaderBackgroundColor = "#F3F3F1"
 redColor = "#C62F3A"
 redTextColor = "#A1202B"
 redBackgroundColor = "#FCEBEC"
@@ -70,9 +71,9 @@ blueTextColor = "#174BB0"
 blueBackgroundColor = "#E6EEFC"
 
 [theme.light.sidebar]
-backgroundColor = "#F6F7FA"
-secondaryBackgroundColor = "#ECEFF4"
-borderColor = "#DDE2EB"
+backgroundColor = "#EFEFEC"
+secondaryBackgroundColor = "#F7F7F5"
+borderColor = "#E3E3E0"
 
 [client]
 toolbarMode = "viewer"

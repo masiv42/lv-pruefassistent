@@ -41,6 +41,28 @@ Optional, wenn Zeit bleibt (30 s): `GAEB-[PROJEKT_004].X83` aus dem Datensatz ho
 - **Beim Vorführen beachten:** Oben steht beim Demo-LV „52 von 52 Funden: Beleg noch nicht am Original geprüft“. Das ist richtig, weil das Demo-LV nicht zum Datensatz gehört. Dazu sagen: „Das ist unsere Testdatei; im Datensatz sind alle 1.706 Belege automatisch im Original wiedergefunden.“
 - **Fensterbreite:** Bei schmalem Fenster werden die Knöpfe „Bestätigen“, „Verwerfen“ und „Rückfrage stellen“ abgeschnitten. Für die Aufnahme das Fenster breit ziehen.
 
+## Variante arbeit/ui3 (Redesign) – nur verwenden, wenn arbeit/ui3 integriert ist
+
+Vorschlag Sitzung UI2 (22.11.2026, nach der Browser-Abnahme von 2991fb2). Der Ablauf oben gilt für den Stand auf main und
+bleibt unverändert. Seiten in arbeit/ui3: „Entscheidungsübersicht“ (Start), „Funde prüfen“, „Alle Positionen“,
+„Mögliches Nachtragspotenzial“, „Zuschlag & What-if“, „Berichte & Export“, „So funktioniert’s“. Farbe nur nach Kategorie,
+Stufen neutral; es gibt keine „Stufenfarben“ mehr.
+
+| Zeit | Klick / Handlung | Was zu sehen ist |
+|---|---|---|
+| 0:00 | Startseite, kurz | Leitfrage „Was muss vor der Angebotsabgabe geklärt werden?“, ein Satz zum Tool, das als erfunden gekennzeichnete Beispiel-LV-Blatt mit Prüfvermerken, Ablauf in drei Schritten, vier Stufen, Grenzen |
+| 0:25 | Demo-LV hochladen | Entscheidungsübersicht: kompakter Kopf mit Datei und Export, Kennzahlen („Noch zu klären“, Fehlerprüfung mit Zahl nachweisbarer Fehler, Rückfrage-Entwürfe, Belegabgleich), „Zuerst klären“ |
+| 1:00 | Zeile „Nennweite (DN) …“ anklicken | Belegfokus rechts: Beleg mit Status-Kennzeichnung, Textmarker auf den DN-Werten, „Warum relevant“, Bieterfrage (Entwurf) |
+| 1:30 | „Fund bearbeiten“ | „Funde prüfen“: Fund geöffnet, KI-Vorschlag getrennt, Entscheidung „Bestätigen“ / „Rückfrage stellen“ |
+| 2:10 | „Zur Position“ | „Alle Positionen“: die Position als Papierblatt mit allen ihren Funden; „Fund öffnen“ zurück |
+| 2:40 | „Mögliches Nachtragspotenzial“ | Sicht auf die Funde Nr. 7–10 und 19 |
+| 3:10 | Dieselbe Datei erneut hochladen | gleiche Funde, gleiche Reihenfolge, Status bleibt (E14) |
+| 3:30 | „Berichte & Export“ | Risikobericht und Bieterfragen (Entwurf) |
+
+Hinweis zum Belegbild (nur PDF): Grenze L61 gilt auch hier; der Rahmen kann bei mehrfach auf der Seite stehendem Beleg
+die falsche Stelle zeigen, der Ausschnitt vergrößert genau diese Stelle (siehe L63). In der Demo mit dem Demo-LV (GAEB
+XML) gibt es kein Belegbild.
+
 ## Was nicht gesagt wird
 
 - Keine Zeitersparnis, keine Trefferquote, kein „findet alle Fehler“ (R11; pitch_zahlen „Nicht verwenden“).

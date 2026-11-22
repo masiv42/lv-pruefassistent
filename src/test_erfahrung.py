@@ -145,8 +145,10 @@ def test_nur_menschliche_aktion():
         check_sql = "sqlite3" in t
         if check_sql:
             aufrufe.append(f"sqlite3:{p.name}")
-    check("Geschrieben wird nur aus app.py, kein anderes Modul nutzt SQLite", aufrufe == ["app.py"], str(aufrufe))
-    t = (SRC / "app.py").read_text(encoding="utf-8")
+    # UI3-1: die Prüfseite (bisher app.py) liegt seit dem Redesign in pages/funde.py; Aussage unverändert
+    check("Geschrieben wird nur aus der Prüfseite (pages/funde.py), kein anderes Modul nutzt SQLite",
+          aufrufe == ["funde.py"], str(aufrufe))
+    t = (SRC / "pages" / "funde.py").read_text(encoding="utf-8")
     block = t[t.index("def setze_status"):t.index("# ---", t.index("def setze_status"))]
     check("Aufruf nur in setze_status (Klick auf Bestätigen, Verwerfen, Rückfrage, Offen)",
           t.count("erfahrung.status_geaendert(") == 1 and "erfahrung.status_geaendert(" in block)

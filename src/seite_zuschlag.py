@@ -106,7 +106,12 @@ def seite():
     import streamlit as st
     from ui_stil import kopf
     kopf("Zuschlag und What-if", "Alle Werte sind Ihre Eingaben")
-    st.info(HINWEIS)
+    import ui_stil                                                  # B3: neutraler Hinweis im neuen Design
+    if ui_stil.neues_design():
+        import oberflaeche
+        oberflaeche.hinweis(HINWEIS)
+    else:
+        st.info(HINWEIS)
     menge = st.number_input("Menge", min_value=0.0, value=0.0, step=1.0, format="%.3f")
     st.subheader("Einzelkosten je Einheit (€) und Zuschläge (%)")
     ek, zu = {}, {}
