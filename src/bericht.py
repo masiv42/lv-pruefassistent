@@ -321,7 +321,7 @@ ERKLAERUNG = {
     "Format": "Dateiformat, aus dem das LV gelesen wurde",
     "Zeitpunkt der Prüfung": "wann dieser Bericht erzeugt wurde",
     "Anzahl Positionen": "Positionen im LV (ohne Titel und Hinweistexte)",
-    "Funde gesamt": "alle Funde der Prüfungen Nr. 1–6; jede Zeile im Blatt „Funde“ ist ein Fund",
+    "Funde gesamt": "alle Funde der Prüfungen Nr. 1–19; jede Zeile im Blatt „Funde“ ist ein Fund",
     "Sortierung": "Reihenfolge der Zeilen im Blatt „Funde“",
     "Datei-Hinweise": "Hinweis zur ganzen Datei; unterdrückt keinen Fund",
     "Prüfabdeckung": "in wie vielen Positionen eine Prüfung überhaupt etwas finden kann",
@@ -520,6 +520,10 @@ def risikobericht(lv_name, funde, texte, info, s2=None, zeitpunkt=None, commit=N
     if (not info["nur_preise"] or funde) and "b5" in info:         # M2 (L48): getrennt von den Regel-Funden (E13)
         import ki_blatt
         ki_blatt.schreibe(wb, info, _schreibe, konfig=ki_konfig, cache_dir=ki_cache_dir)
+    if not info["nur_preise"] or funde:          # Kalkulatorsicht (22.11.2026): Nr. 1–15, vor den bestehenden Blättern
+        import bericht_kalkulator
+        bericht_kalkulator.schreibe(wb, lv_name, funde, texte, info, s2, _schreibe, beleg_pruefung, PRUEFUNGEN,
+                                    STUFEN, _kostenwirkung(), SCHLUSSSATZ)
 
     puffer = io.BytesIO()
     wb.save(puffer)

@@ -32,6 +32,7 @@ from pathlib import Path
 from openpyxl import load_workbook
 
 import bericht
+import bericht_kalkulator
 from lv_parser import parse
 from pruefung_widerspruch import normalisiere_oz, beleg_im_text
 from pruefung_formal import nur_preise
@@ -92,7 +93,7 @@ def r5_fehler(funde, df):
 def export_fehler(daten, mit_funden, anzahl):
     wb = load_workbook(io.BytesIO(daten))
     fehler = []
-    soll = ["Übersicht"] + (["Funde"] if mit_funden else [])
+    soll = (bericht_kalkulator.BLAETTER if mit_funden else []) + ["Übersicht"] + (["Funde"] if mit_funden else [])
     if wb.sheetnames[:len(soll)] != soll:
         fehler.append(f"Blätter {wb.sheetnames}, erwartet {soll}")
     if mit_funden and "Funde" in wb.sheetnames:

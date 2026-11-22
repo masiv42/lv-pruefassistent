@@ -16,6 +16,8 @@ from pathlib import Path
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
+import bericht_kalkulator as K
+
 from lv_parser import parse, fingerprint
 from pruefung_formal import sortiere, HINWEIS_PHASE_86
 from bericht import (pruefe_lv, risikobericht, dateiname, r7_verstoesse, SPALTEN, SCHLUSSSATZ,
@@ -58,9 +60,10 @@ def test_lv00():
     wb = oeffne(daten)
     ws = wb["Funde"]
     zeilen = werte(ws)
-    check("LV_00: Blätter „Übersicht“, „Funde“, „Legende“ (B1r), „Nachtrag und Streitpunkte“ (M2b), „KI-Vorschläge“ (M2)",
-          wb.sheetnames == ["Übersicht", "Funde", "Legende", "Nachtrag und Streitpunkte", "KI-Vorschläge"],
-          str(wb.sheetnames))
+    check("LV_00: Kalkulatorsicht vorn, dann „Übersicht“, „Funde“, „Legende“ (B1r), „Nachtrag und Streitpunkte“ (M2b), "
+          "„KI-Vorschläge“ (M2)",
+          wb.sheetnames == K.BLAETTER + ["Übersicht", "Funde", "Legende", "Nachtrag und Streitpunkte", "KI-Vorschläge"]
+          and wb.active.title == "Zusammenfassung", str(wb.sheetnames))
     check("LV_00: Kopfzeile wie vorgegeben", zeilen[0] == SPALTEN, str(zeilen[0]))
     # B1p3: 131 → 132 (neu Nr. 3 an 1.4.7 und Nr. 16 an 3.1.280/330, entfällt Nr. 13 an 3.4.89.0); 268 → 269 Positionen
     check("LV_00: Zeilen im Blatt „Funde“ = Funde in der App (132 nach B1p3; Nr. 1–6, 17: 69)",
@@ -114,6 +117,8 @@ def test_lv00():
     wb2 = oeffne(risikobericht(n, funde2, texte2, info2, zeitpunkt=T2, commit="test"))
     check("Wiederholbarkeit: Blatt „Funde“ bei zweimal Export inhaltlich identisch",
           werte(wb2["Funde"]) == zeilen)
+    check("Wiederholbarkeit (E14): Kalkulatorsicht bei zweimal Export identisch",
+          all(werte(wb2[b]) == werte(wb[b]) for b in K.BLAETTER))
     u1, u2 = uebersicht(wb), uebersicht(wb2)
     check("Wiederholbarkeit: Übersicht unterscheidet sich nur im Zeitpunkt",
           [k for k in u1 if u1[k] != u2.get(k)] == ["Zeitpunkt der Prüfung"])
@@ -317,7 +322,59 @@ def test_e13():
     check("R7 – Warnhinweis ohne verbotene Begriffe", not r7_verstoesse([KI_WARNHINWEIS, KI_LISTE_HINWEIS]))
 
 
+def test_kalkulator():
+    """Kalkulatorsicht (22.11.2026): Nr. 1–15, jede Fundstelle einmal, Gruppen vollständig, nichts verändert."""
+    for n in ("LV_00_Roh_und_Erdauarbeiten.pdf", "8209.003_Leistungsverzeichnis_leer.X83", "[ORT_024] LV24069.D86"):
+        funde, texte, info = pruefe_lv(D / n)
+        vorher = [dict(f) for f in funde]
+        wb = oeffne(risikobericht(n, funde, texte, info, zeitpunkt=T1, commit="test"))
+        check(f"{n}: Funde unverändert (Stufe, Kategorie, Rang, Belege)", funde == vorher)
+        soll = [f["id"] for f in sortiere(funde) if f["pruefung"] <= 15]
+        det = werte(wb["Risiken je Position"])
+        kopf = det[0]
+        ids = [z[kopf.index("Fund-ID")] for z in det[1:]]
+        check(f"{n}: „Risiken je Position“ = jede Fundstelle Nr. 1–15 genau einmal, Sortierung wie App",
+              ids == soll, f"{len(ids)} / {len(soll)}")
+        neu = [wb[b] for b in K.BLAETTER]
+        texte_neu = [c for w in neu for r in w.iter_rows(values_only=True) for c in r if isinstance(c, str)]
+        check(f"{n}: keine Fund-ID der Prüfungen Nr. 16–19 in der Kalkulatorsicht",
+              not any(re.match(r"(1[6-9])\|", t) for t in texte_neu))
+        reg = werte(wb["Risikoregister"])
+        anz = sum(z[reg[0].index("Anzahl Fundstellen")] for z in reg[1:])
+        check(f"{n}: Risikoregister fasst alle Fundstellen zusammen (Summe Anzahl = {len(soll)})", anz == len(soll),
+              str(anz))
+        by_id = {f["id"]: f for f in funde}
+        st = kopf.index("Stufe")
+        ka = kopf.index("Kategorie")
+        check(f"{n}: Stufe und Kategorie je Fundstelle wie im Fund",
+              all(z[st] == f"{by_id[z[kopf.index('Fund-ID')]]['stufe']} – {STUFEN[by_id[z[kopf.index('Fund-ID')]]['stufe']]}"
+                  and z[ka] == by_id[z[kopf.index("Fund-ID")]]["kategorie"] for z in det[1:]))
+        og = kopf.index("Originaltext (wörtlich aus dem LV)")
+        check(f"{n}: Originaltext = wörtliche Belege des Funds (R5)",
+              all(z[og] == "\n".join(f"„{b}“" for b in by_id[z[kopf.index('Fund-ID')]]["belege"]) for z in det[1:]))
+        check(f"{n}: R7 – keine verbotenen Begriffe in der Kalkulatorsicht", not r7_verstoesse(texte_neu),
+              str(r7_verstoesse(texte_neu)[:3]))
+        check(f"{n}: keine KI-Angabe in der Kalkulatorsicht (E13)", not any("KI-" in t for t in texte_neu))
+        check(f"{n}: keine Formelzelle", all(c.data_type != "f" for w in neu for r in w.iter_rows() for c in r))
+        zus = {z[0]: z[1] for z in werte(wb["Zusammenfassung"]) if z[0] is not None}
+        check(f"{n}: Zusammenfassung nennt Funde im Bericht und Nr. 16–19 getrennt",
+              zus["Funde in diesem Bericht"] == len(soll)
+              and zus.get("Prüfungen Nr. 16–19", 0) == sum(f["pruefung"] > 15 for f in funde)
+              and SCHLUSSSATZ in zus)
+        fr = werte(wb["Bieterfragen"])
+        if n.endswith(".D86"):
+            check(f"{n}: Auftrags-LV – keine Bieterfragen, mit Hinweis",
+                  len(fr) == 3 and fr[2][3] == "Auftrags-LV – keine Bieterfragen", str(fr[2:]))
+        else:
+            check(f"{n}: Bieterfragen nur zu Funden mit Rückfrage-Empfehlung, mit Beleg",
+                  len(fr) > 2 and all(r[4] for r in fr[2:]))
+    funde, texte, info = pruefe_lv(D / "StBALV23040.D84")
+    wb = oeffne(risikobericht("StBALV23040.D84", funde, texte, info, zeitpunkt=T1, commit="test"))
+    check("Reine Preisdatei: keine Kalkulatorsicht", wb.sheetnames == ["Übersicht", "Legende"], str(wb.sheetnames))
+
+
 if __name__ == "__main__":
+    test_kalkulator()
     test_lv00()
     test_preise_und_phase86()
     test_formel_und_text()
